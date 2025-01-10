@@ -22,11 +22,19 @@ public:
 	//매니저에서 만드는 몬스터-> 매니저에서 관리할지
 	Monster*/*주소반환*/ GenerateMonster(int level);
 
+
 	//배틀관리
 	void Battle(Character* player);
 
 	//인벤토리display
 	void DisplayInventory(Character* player);
+
+	//게임 매니저에 몬스터 넣기
+	void SetMonster(Monster* monster);
+
+	//몬스터 주소 얻어오기
+	Monster* GetMonster();
+
 
 public:
 	GameManger();
@@ -36,8 +44,8 @@ private:
 	//플레이어 관리
 	Character* mMyCharPtr;
 	//몬스터 벡터로 관리?
-	std::vector<int> mMonsterVec;
-	
+	//std::vector<int> mMonsterVec;
+	Monster* mMonster;
 };
 
 
