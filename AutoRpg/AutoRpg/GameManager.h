@@ -1,6 +1,6 @@
 #pragma once
 /*
-Çì´õÆÄÀÏ ÂüÁ¶¸¦ ÃÖ¼ÒÈ­ ÇÏ±â À§ÇØ Àü¹æ¼±¾ð Çß½À´Ï´Ù.
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½È­ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½æ¼±ï¿½ï¿½ ï¿½ß½ï¿½ï¿½Ï´ï¿½.
 */
 #include <vector>
 class Monster;
@@ -10,22 +10,22 @@ class Character;
 class GameManger
 {
 public:
-	static GameManger* GetInstance()//&->*Æ÷ÀÎÅÍ ¸®ÅÏÀ¸·Î ¹Ù²å½À´Ï´Ù.
+	static GameManger* GetInstance()//&->*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½Ï´ï¿½.
 	{
 		static GameManger gm;
-		return &gm;//->ÁÖ¼Ò ¹ÝÈ¯ 
+		return &gm;//->ï¿½Ö¼ï¿½ ï¿½ï¿½È¯ 
 	}
 
 public:
 	void SetPlayer(Character* player);
 
-	//¸Å´ÏÀú¿¡¼­ ¸¸µå´Â ¸ó½ºÅÍ-> ¸Å´ÏÀú¿¡¼­ °ü¸®ÇÒÁö
-	Monster*/*ÁÖ¼Ò¹ÝÈ¯*/ GenerateMonster(int level);
+	//ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½-> ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	Monster*/*ï¿½Ö¼Ò¹ï¿½È¯*/ GenerateMonster(int level);
 
-	//¹èÆ²°ü¸®
+	//ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½
 	void Battle(Character* player);
 
-	//ÀÎº¥Åä¸®display
+	//ï¿½Îºï¿½ï¿½ä¸®display
 	void DisplayInventory(Character* player);
 
 public:
@@ -33,9 +33,9 @@ public:
 	~GameManger();
 
 private:
-	//ÇÃ·¹ÀÌ¾î °ü¸®
+	//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 	Character* mMyCharPtr;
-	//¸ó½ºÅÍ º¤ÅÍ·Î °ü¸®?
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½?
 	std::vector<int> mMonsterVec;
 	
 };
