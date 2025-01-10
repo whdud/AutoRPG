@@ -7,6 +7,7 @@
 using namespace std;
 
 //����� �߹� ����
+//한글 깨지나요???
 int main(void)
 {
 	//����Ʈ������ �̿�?

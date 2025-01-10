@@ -12,6 +12,7 @@ public:
 private:
     //안녕하세요
     
+    
     string  mName;
     int     mLevel;
     int     mMaxHp;

@@ -1,8 +1,8 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "GameManager.h"
 GameManger::GameManger()
 {
-	std::cout << "°ÔÀÓ ¸Å´ÏÀú ½ÇÇà Å×½ºÆ®..." << std::endl;
+	std::cout << "ê²Œìž„ ë§¤ë‹ˆì € ì‹¤í–‰ í…ŒìŠ¤íŠ¸..." << std::endl;
 }
 
 GameManger::~GameManger()
