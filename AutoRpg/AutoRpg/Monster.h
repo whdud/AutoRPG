@@ -1,12 +1,6 @@
 #pragma once
-class Moster
-{
+class Monster {
 public:
-	static Moster& GetInstance()
-	{
-		static Moster m;
-		return m;
-	}
-	Moster();
-	~Moster();
+	Monster();
+	~Monster();
 };
