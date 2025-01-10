@@ -9,16 +9,16 @@ using namespace std;
 
 int main(void)
 {
-	//½º¸¶Æ®Æ÷ÀÎÅÍ ÀÌ¿ë?
+	//ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½?
 	Character* player = new Character();
 	
-	//¸ó½ºÅÍ »ý¼º
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	GameManger::GetInstance()->GenerateMonster(10);
 	
-	//ÇÃ·¹ÀÌ¾î ³Ö¾î¼­ ´øÀüÃâ¹ß ¤¡¤¡
+	//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ö¾î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	GameManger::GetInstance()->Battle(player);
 
-	//ÇÃ·¹ÀÌ¾îÀÇ ÀÎº¥Åä¸® º¸´Â ÄÚµå
+	//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
 	GameManger::GetInstance()->DisplayInventory(player);
 	return 0;
 }
