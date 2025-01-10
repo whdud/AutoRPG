@@ -10,6 +10,11 @@ class Character;
 class GameManger
 {
 public:
+	/*
+	데이터 영역에 GameManager 객체를 만든것
+	이 객체의 멤버함수에 접근하려면 
+	GameManger::GetInstance()->를 통해 이 객체에서 멤버함수 부를수있다!
+	*/
 	static GameManger* GetInstance()//&->*포인터 리턴으로 바꿨습니다.
 	{
 		static GameManger gm;
