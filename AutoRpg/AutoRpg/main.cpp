@@ -4,7 +4,9 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "Monster.h"
+#include "troll.h"
 using namespace std;
+
 
 //±Í«„∫Í æﬂπﬂ §æ§∑
 int main(void)
