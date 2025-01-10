@@ -6,7 +6,7 @@
 #include "Monster.h"
 using namespace std;
 
-//깃허브 야발
+//깃허브 야발 ㅎㅇ
 int main(void)
 {
 	//스마트포인터 이용?
