@@ -1,6 +1,7 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <vector>
+#include "defines.h"
 #include "GameManager.h"
 #include "Character.h"
 #include "Monster.h"
@@ -8,21 +9,30 @@
 using namespace std;
 
 
-//±êÇãºê ¾ß¹ß ¤¾¤·
+//ê¹ƒí—ˆë¸Œ ì•¼ë°œ ã…ã…‡
 int main(void)
 {
-	//½º¸¶Æ®Æ÷ÀÎÅÍ ÀÌ¿ë?
+	//ìŠ¤ë§ˆíŠ¸í¬ì¸í„° ì´ìš©?
 	Character* player = new Character();
 
 	GameManger::GetInstance()->SetPlayer(player);
 
-	//¸ó½ºÅÍ »ı¼º
-	GameManger::GetInstance()->GenerateMonster(10);
 	
-	//ÇÃ·¹ÀÌ¾î ³Ö¾î¼­ ´øÀüÃâ¹ß ¤¡¤¡
-	GameManger::GetInstance()->Battle(player);
+	
+	while (true)
+	{
+		//ëª¬ìŠ¤í„° ë ˆë²¨ì…ë ¥í›„ ëœë¤ 1ë§ˆë¦¬ ìƒì„±
+		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(10));
 
-	//ÇÃ·¹ÀÌ¾îÀÇ ÀÎº¥Åä¸® º¸´Â ÄÚµå
-	GameManger::GetInstance()->DisplayInventory(player);
+		//ë§Œë“  ëª¬ìŠ¤í„°ì™€ ë°”ë¡œ ë°°í‹€ ã„±ã„± ì•ˆì—ì„œ ì´ê²¼ìœ¼ë©´ ìƒì ìŠ¤í‚µ or ìƒì ë°©ë¬¸  
+		GET_SINGLE(GameManger)->Battle(player);
+
+
+		//ë„ì „ê³¼ì œ 10ë ˆë²¨ ì°ê³  ë³´ìŠ¤ëª¬ìŠ¤í„° ë‚˜ì˜´-> í´ë¦¬ì–´í•˜ë©´  whileë¬¸ íƒˆì¶œ
+
+	}
+
+	
+
 	return 0;
 }

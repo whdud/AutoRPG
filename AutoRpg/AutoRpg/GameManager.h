@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 /*
-Çì´õÆÄÀÏ ÂüÁ¶¸¦ ÃÖ¼ÒÈ­ ÇÏ±â À§ÇØ Àü¹æ¼±¾ğ Çß½À´Ï´Ù.
+í—¤ë”íŒŒì¼ ì°¸ì¡°ë¥¼ ìµœì†Œí™” í•˜ê¸° ìœ„í•´ ì „ë°©ì„ ì–¸ í–ˆìŠµë‹ˆë‹¤.
 */
 #include <vector>
 class Monster;
@@ -10,22 +10,22 @@ class Character;
 class GameManger
 {
 public:
-	static GameManger* GetInstance()//&->*Æ÷ÀÎÅÍ ¸®ÅÏÀ¸·Î ¹Ù²å½À´Ï´Ù.
+	static GameManger* GetInstance()//&->*í¬ì¸í„° ë¦¬í„´ìœ¼ë¡œ ë°”ê¿¨ìŠµë‹ˆë‹¤.
 	{
 		static GameManger gm;
-		return &gm;//->ÁÖ¼Ò ¹İÈ¯ 
+		return &gm;//->ì£¼ì†Œ ë°˜í™˜ 
 	}
 
 public:
 	void SetPlayer(Character* player);
 
-	//¸Å´ÏÀú¿¡¼­ ¸¸µå´Â ¸ó½ºÅÍ-> ¸Å´ÏÀú¿¡¼­ °ü¸®ÇÒÁö
-	Monster*/*ÁÖ¼Ò¹İÈ¯*/ GenerateMonster(int level);
+	//ë§¤ë‹ˆì €ì—ì„œ ë§Œë“œëŠ” ëª¬ìŠ¤í„°-> ë§¤ë‹ˆì €ì—ì„œ ê´€ë¦¬í• ì§€
+	Monster*/*ì£¼ì†Œë°˜í™˜*/ GenerateMonster(int level);
 
-	//¹èÆ²°ü¸®
+	//ë°°í‹€ê´€ë¦¬
 	void Battle(Character* player);
 
-	//ÀÎº¥Åä¸®display
+	//ì¸ë²¤í† ë¦¬display
 	void DisplayInventory(Character* player);
 
 public:
@@ -33,9 +33,9 @@ public:
 	~GameManger();
 
 private:
-	//ÇÃ·¹ÀÌ¾î °ü¸®
+	//í”Œë ˆì´ì–´ ê´€ë¦¬
 	Character* mMyCharPtr;
-	//¸ó½ºÅÍ º¤ÅÍ·Î °ü¸®?
+	//ëª¬ìŠ¤í„° ë²¡í„°ë¡œ ê´€ë¦¬?
 	std::vector<int> mMonsterVec;
 	
 };
