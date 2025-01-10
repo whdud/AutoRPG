@@ -12,11 +12,11 @@ public:
 private:
     //멤버변수엔 _사용하는게 좋아보여용
     //생성자 이니셜라이즈 로 초기화 ㄱㄱ
-    string  _name;
-    int     _level;
-    int     _maxHp;
-    int     _hp;
-    int     _attack;
-    int     _experience;
-    int     _gold;
+    string  mName;
+    int     mLevel;
+    int     mMaxHp;
+    int     mHp;
+    int     mAttack;
+    int     mExperience;
+    int     mGold;
 };

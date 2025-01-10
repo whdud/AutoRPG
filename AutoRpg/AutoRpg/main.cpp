@@ -11,7 +11,9 @@ int main(void)
 {
 	//스마트포인터 이용?
 	Character* player = new Character();
-	
+
+	GameManger::GetInstance()->SetPlayer(player);
+
 	//몬스터 생성
 	GameManger::GetInstance()->GenerateMonster(10);
 	

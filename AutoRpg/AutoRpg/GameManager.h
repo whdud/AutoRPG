@@ -2,6 +2,7 @@
 /*
 헤더파일 참조를 최소화 하기 위해 전방선언 했습니다.
 */
+#include <vector>
 class Monster;
 class Character;
 
@@ -16,6 +17,8 @@ public:
 	}
 
 public:
+	void SetPlayer(Character* player);
+
 	//매니저에서 만드는 몬스터-> 매니저에서 관리할지
 	Monster*/*주소반환*/ GenerateMonster(int level);
 
@@ -31,9 +34,10 @@ public:
 
 private:
 	//플레이어 관리
-	Character* myChar;
+	Character* mMyCharPtr;
 	//몬스터 벡터로 관리?
-
+	std::vector<int> mMonsterVec;
+	
 };
 
 
