@@ -14,7 +14,7 @@ class Shop
 private:
 
 	// item storage
-	vector<unique_ptr<Item>> mAvailableItems;
+	vector<shared_ptr<Item>> mAvailableItems;
 
 public:
 
