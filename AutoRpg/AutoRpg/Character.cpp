@@ -1,17 +1,24 @@
-#include "Character.h"
 #include <iostream>
+#include "Character.h"
 
 using namespace std;
 
 Character::Character()
+			:mName("Player"),
+			 mLevel(1),
+			 mMaxHp(10),
+			 mHp(mMaxHp),
+			 mAttack(2),
+			 mExperience(0),
+			 mGold(0)
 {
-	mName = "Player";
+	/*mName = "Player";
 	mLevel = 1;
 	mMaxHp = 10;
 	mHp = mMaxHp;
 	mAttack = 2;
 	mExperience = 0;
-	mGold = 0;
+	mGold = 0;*/
 }
 
 void Character::displayStatus()
