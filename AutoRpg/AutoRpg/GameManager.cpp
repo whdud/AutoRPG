@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "GameManager.h"
+#include "Character.h"
 #include "troll.h"
 GameManger::GameManger()
 {
@@ -14,7 +15,7 @@ void GameManger::SetPlayer(Character* player)
 {
 	std::cout << "게임 매니저 실행 테스트...\n" << std::endl;
 	mMyCharPtr = player;
-	/*std::cout << "플레이어 이름: "<< << std::endl;*/ //플레이어 겟으로 정보 가져오기 private
+	std::cout << "플레이어 이름: "<<mMyCharPtr->getName() << std::endl; //플레이어 겟으로 정보 가져오기 private
 }
 
 Monster* GameManger::GenerateMonster(int level)

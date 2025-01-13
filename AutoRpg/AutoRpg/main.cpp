@@ -16,7 +16,7 @@ int main(void)
 	Character* player = new Character();
 
 	GameManger::GetInstance()->SetPlayer(player);
-
+	
 	
 	
 	while (true)
@@ -26,6 +26,8 @@ int main(void)
 
 		//만든 몬스터와 바로 배틀 ㄱㄱ 안에서 이겼으면 상점스킵 or 상점방문  
 		GET_SINGLE(GameManger)->Battle(player);
+		//상점 가는 코드
+		// 
 
 
 		//도전과제 10레벨 찍고 보스몬스터 나옴-> 클리어하면  while문 탈출
