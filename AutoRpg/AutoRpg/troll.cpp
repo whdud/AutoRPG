@@ -1,4 +1,4 @@
-#include "troll.h"
+﻿#include "troll.h"
 
 troll::troll()
 {
