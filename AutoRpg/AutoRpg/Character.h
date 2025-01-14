@@ -31,4 +31,10 @@ public:
     void UseItem(int index);
     void DisplayStatus() const;
     void ResetCharacter();
+
+    void IncreaseHealth(int amount);
+    void IncreaseAttack(int amount);
+    int GetGold() const;
+    void ReduceGold(int amount);
+
 };

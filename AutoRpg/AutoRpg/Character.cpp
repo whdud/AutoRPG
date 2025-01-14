@@ -23,6 +23,32 @@ void Character::LevelUp() {
     }
 }
 
+void Character::IncreaseHealth(int amount) {
+
+    mHp = min(mHp + amount, mMaxHp);
+    cout << "Health increased " << amount << ". Current Health: " << mHp << endl;
+
+}
+
+void Character::IncreaseAttack(int amount) {
+
+    mAttack += amount;
+    cout << "Attack increased " << amount << ". Current AttackDamage: " << mAttack << endl;
+
+}
+
+void Character::ReduceGold(int amount) {
+
+    mGold -= amount;
+
+}
+
+int Character::GetGold() const {
+
+    return mGold;
+
+}
+
 void Character::AddItem(shared_ptr<Item> item) {
     mInventory.AddItem(item);
 }

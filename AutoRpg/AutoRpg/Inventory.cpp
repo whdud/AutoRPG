@@ -7,7 +7,7 @@ void Inventory::AddItem(shared_ptr<Item> item) {
 
 void Inventory::UseItem(int index, Character& character) {
     if (index >= 0 && index < mItems.size()) {
-        mItems[index]->use(character);
+        mItems[index]->Use(character);
         mItems.erase(mItems.begin() + index);
     }
     else {

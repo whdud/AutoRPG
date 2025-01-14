@@ -32,13 +32,13 @@ void Shop::BuyItem(int index, Character& character)
 
 	shared_ptr<Item>& selectedItem = mAvailableItems[index];
 
-	if (character.Getgold() < selectedItem->GetPrice()) {
+	if (character.GetGold() < selectedItem->GetPrice()) {
 
 		cout << "not enough Gold" << endl;
 		return;
 
 	}
-	character.reduceGold(selectedItem->GetPrice());
+	character.ReduceGold(selectedItem->GetPrice());
 	cout << "Item purchased successfully" << endl;
 
 }
