@@ -13,8 +13,8 @@ private:
     vector<shared_ptr<Item>> mItems;
 
 public:
-    void addItem(shared_ptr<Item> item);
-    void useItem(int index, Character& character);
-    void displayInventory() const;
-    void clearInventory();
+    void AddItem(shared_ptr<Item> item);
+    void UseItem(int index, Character& character);
+    void DisplayInventory() const;
+    void ClearInventory();
 };

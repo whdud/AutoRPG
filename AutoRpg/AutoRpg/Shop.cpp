@@ -32,7 +32,7 @@ void Shop::BuyItem(int index, Character& character)
 
 	shared_ptr<Item>& selectedItem = mAvailableItems[index];
 
-	if (character.GetGold() < selectedItem->GetPrice()) {
+	if (character.Getgold() < selectedItem->GetPrice()) {
 
 		cout << "not enough Gold" << endl;
 		return;

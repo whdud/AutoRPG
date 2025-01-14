@@ -6,13 +6,13 @@ Character::Character(const string& charName)
     : mName(charName), mLevel(1), mMaxHp(100), mHp(100), mAttack(10), mExperience(0), mGold(0) {
 }
 
-string Character::getName() const { return mName; }
-void Character::setName(const string& name) { mName = name; }
+string Character::GetName() const { return mName; }
+void Character::SetName(const string& name) { mName = name; }
 
-int Character::getLevel() const { return mLevel; }
-void Character::setLevel(int level) { mLevel = level; }
+int Character::GetLevel() const { return mLevel; }
+void Character::SetLevel(int level) { mLevel = level; }
 
-void Character::levelUp() {
+void Character::LevelUp() {
     if (mExperience >= 100 && mLevel < 10) {
         mExperience -= 100;
         mLevel++;
@@ -23,32 +23,32 @@ void Character::levelUp() {
     }
 }
 
-void Character::addItem(shared_ptr<Item> item) {
-    mInventory.addItem(item);
+void Character::AddItem(shared_ptr<Item> item) {
+    mInventory.AddItem(item);
 }
 
-void Character::useItem(int index) {
-    mInventory.useItem(index, *this);
+void Character::UseItem(int index) {
+    mInventory.UseItem(index, *this);
 }
 
-void Character::displayStatus() const {
+void Character::DisplayStatus() const {
     cout << "--- " << mName << " 상태 ---\n";
     cout << "레벨: " << mLevel << "\n";
     cout << "체력: " << mHp << "/" << mMaxHp << "\n";
     cout << "공격력: " << mAttack << "\n";
     cout << "골드: " << mGold << "\n";
     cout << "경험치: " << mExperience << "\n";
-    mInventory.displayInventory();
+    mInventory.DisplayInventory();
     cout << "-------------------------\n";
 }
 
-void Character::resetCharacter() {
+void Character::ResetCharacter() {
     mLevel = 1;
     mMaxHp = 100;
     mHp = mMaxHp;
     mAttack = 10;
     mExperience = 0;
     mGold = 0;
-    mInventory.clearInventory();
+    mInventory.ClearInventory();
     cout << "캐릭터가 초기화되었습니다.\n";
 }

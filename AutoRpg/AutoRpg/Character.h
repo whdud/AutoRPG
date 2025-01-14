@@ -20,15 +20,15 @@ private:
 public:
     Character(const string& charName);
 
-    string getName() const;
-    void setName(const string& name);
+    string GetName() const;
+    void SetName(const string& name);
 
-    int getLevel() const;
-    void setLevel(int level);
+    int GetLevel() const;
+    void SetLevel(int level);
 
-    void levelUp();
-    void addItem(shared_ptr<Item> item);
-    void useItem(int index);
-    void displayStatus() const;
-    void resetCharacter();
+    void LevelUp();
+    void AddItem(shared_ptr<Item> item);
+    void UseItem(int index);
+    void DisplayStatus() const;
+    void ResetCharacter();
 };
