@@ -39,6 +39,8 @@ void Shop::BuyItem(int index, Character& character)
 
 	}
 	character.ReduceGold(selectedItem->GetPrice());
+	character.AddItem(selectedItem);
+
 	cout << "Item purchased successfully" << endl;
 
 }

@@ -3,7 +3,7 @@
 
 void Inventory::AddItem(shared_ptr<Item> item) {
     mItems.push_back(item);
-}
+} 
 
 void Inventory::UseItem(int index, Character& character) {
     if (index >= 0 && index < mItems.size()) {
