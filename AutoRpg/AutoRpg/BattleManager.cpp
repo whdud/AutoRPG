@@ -51,8 +51,27 @@ void BattleManager::Update( Character* player, Monster* monster)
         {
             if (input == '1')
                 UseItem(0); //Test
-            if (input == '2')
+            else if (input == '2')
                 UseItem(1); //Test
+        }
+        else if (BTTSTATE::CLOSE == mCurrentTurn )
+        {
+            if (  CLOSESTATE::cDIE == mSubState)//ReStartGame:A / OutGame:Q 
+            {
+
+            }
+            else// CLOSESTATE::WIN  // Store:A /Mob hunting:S / Status:D 
+            {  
+                if (input == 'a')//
+                {
+                }
+                else if (input == 's')
+                {
+                }
+                else if (input == 'd')
+                {
+                }
+            }
         }
     }
 }
@@ -97,7 +116,7 @@ void BattleManager::Close()
 {
     switch (mSubState)
     {
-        case 0:
+    case CLOSESTATE::cRESULT:
             mBattleTime += GetDeltaTime();
             if (1.f > mBattleTime)
                 return;
@@ -105,22 +124,21 @@ void BattleManager::Close()
             if (0 == mPlayer->getHp())
             {
                 InputMsg(" ");
-                InputMsg("    ====  메인화면 :버튼 A / 종료하기 : Q  ====");
-                SetSubState(1);
+                InputMsg("    ====  새로하기 : A / 종료하기 : Q  ====");
+                SetSubState(CLOSESTATE::cDIE);
             }
             else
             {
                 InputMsg(" ");
                 InputMsg("            ======  전투 종료  ======");
-                SetSubState(2);
+                InputMsg(" ");
+                InputMsg("    ====  상점: A  / 몬스터 사냥: S  / 스테이터스 확인: D  ====");
+                SetSubState(CLOSESTATE::cWIN);
             }
             break;
-        case 1://Player die / delay Select Game
-
-            break;
-        case 2:
-            // Out battle
-            break;
+    case CLOSESTATE::cDIE:break;//Player die / delay Select Game
+    case CLOSESTATE::cWIN: break;
+    case CLOSESTATE::cDELAY: break;
     }
 }
 
@@ -241,8 +259,19 @@ void BattleManager::PlayerWin()
             mBattleTime += GetDeltaTime();
             if (1.f > mBattleTime)
                 return;
-            int Gold = RandRange(10,100);
+            int Gold = 10;//RandRange(10, 100);
+            mPlayer->setGold(Gold);
             InputMsg("           ====== 골드/" + to_string(Gold) + " 획득! ====== ");
+            SetSubState(mSubState + 1);
+        }break;
+        case 3:
+        {
+            mBattleTime += GetDeltaTime();
+            if (1.f > mBattleTime)
+                return;
+            int Exp = 50;//RandRange(10, 100);
+            mPlayer->setExperience(Exp);
+            InputMsg("           ====== 경험치/" + to_string(Exp) + " 획득! ====== ");
             SetState(BTTSTATE::CLOSE);
         }break;
     }

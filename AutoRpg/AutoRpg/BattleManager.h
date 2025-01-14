@@ -21,7 +21,13 @@ enum BTTSTATE
 	DIE,
 	CLOSE,
 };
-
+enum CLOSESTATE
+{
+	cRESULT,
+	cDIE,
+	cWIN,
+	cDELAY
+};
 
 class BattleManager
 {
