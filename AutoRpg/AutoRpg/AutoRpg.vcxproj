@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="AttackBoost.cpp" />
+=======
+    <ClCompile Include="BattleManager.cpp" />
+>>>>>>> sewonbranch(BattleSystem)
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="HealthPotion.cpp" />
@@ -31,7 +35,11 @@
     <ClCompile Include="troll.cpp" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="AttackBoost.h" />
+=======
+    <ClInclude Include="BattleManager.h" />
+>>>>>>> sewonbranch(BattleSystem)
     <ClInclude Include="Character.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="GameManager.h" />
