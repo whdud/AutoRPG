@@ -5,9 +5,9 @@ using namespace std;
 
 AttackBoost :: AttackBoost(int price, int attackincrease) : Item("Attack Boost", price), mAttackIncrease(attackincrease) {}
 
-void AttackBoost::use(Character& character) 
+void AttackBoost::Use(Character& character) 
 {
 
-	character.increaseAttack(10);
+	character.IncreaseAttack(10);
 
 }

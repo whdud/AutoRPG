@@ -17,7 +17,7 @@ public:
 	HealthPotion(int price, int healthrestore);
 
 	// Character hp restore
-	void use(Character& character) override;
+	void Use(Character& character) override;
 
 };
 

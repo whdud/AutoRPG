@@ -17,7 +17,7 @@ public:
 	AttackBoost(int price, int attackincrease);
 
 	// character increase attack damage
-	void use(Character& charcter) override;
+	void Use(Character& charcter) override;
 
 };
 
