@@ -14,7 +14,8 @@ int main() {
     Character player("Hero");
     cout << "게임 시작! 캐릭터 생성 완료.\n";
     player.displayStatus();
-
+	return 0;
+}
    
 //깃허브 야발 ㅎㅇ
 /*int main(void)
