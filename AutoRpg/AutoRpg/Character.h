@@ -1,5 +1,4 @@
 #pragma once
-//Çì´õ¿£ ÃÖ¼ÒÇÑÀÇ ÀÎÅ¬·çµå°¡ ÁÁ´Ù³×¿ä?
 #include <string>
 using namespace std;
 
@@ -7,16 +6,44 @@ class Character {
 
 public:
     Character();
-    ~Character();
+	void LevelUp();
+    // ì´ë¦„ ê²Œí„°ì™€ ì„¸í„°  
+    string getName() const { return mName; }
+    void setName(const string& name) { mName = name; }
+
+    // ë ˆë²¨ ê²Œí„°ì™€ ì„¸í„°
+    int getLevel() const { return mLevel; }
+    void setLevel(int level) { mLevel = level; }
+
+    // ìµœëŒ€ìµœë ¥ ê²Œí„°ì™€ ì„¸í„°
+    int getMaxHp() const { return mMaxHp; }
+    void setMaxHp(int maxHp) { mMaxHp = maxHp; }
+
+    // ì²´ë ¥ ê²Œí„°ì™€ ì„¸í„°
+    int getHp() const { return mHp; }
+    void setHp(int hp) { mHp = hp; }
+
+    // ê³µê²©ë ¥ ê²Œí„°ì™€ ì„¸í„°
+    int getAttack() const { return mAttack; }
+    void setAttack(int attack) { mAttack = attack; }
+
+    // ê²½í—˜ì¹˜ ê²Œí„°ì™€ ì„¸í„°
+    int getExperience() const { return mExperience; }
+    void setExperience(int experience) { mExperience = experience; }
+
+    // ê³¨ë“œ ê²Œí„°ì™€ ì„¸í„°
+    int getGold() const { return mGold; }
+    void setGold(int gold) { mGold = gold; }
+protected:
+    void displayStatus();
+	void resetCharacter();
 
 private:
-    //¸â¹öº¯¼ö¿£ _»ç¿ëÇÏ´Â°Ô ÁÁ¾Æº¸¿©¿ë
-    //»ı¼ºÀÚ ÀÌ´Ï¼È¶óÀÌÁî ·Î ÃÊ±âÈ­ ¤¡¤¡
-    string  _name;
-    int     _level;
-    int     _maxHp;
-    int     _hp;
-    int     _attack;
-    int     _experience;
-    int     _gold;
+    string  mName;
+    int     mLevel;
+    int     mMaxHp;
+    int     mHp;
+    int     mAttack;
+    int     mExperience;
+    int     mGold;
 };

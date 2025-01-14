@@ -30,7 +30,7 @@ public:
 	~BattleManager();
 public:
 	void Update(Character* player, Monster* monster);
-	void StartBattle();
+	void ReadyBattle();
 
 	//게임중에 아이템 먹기.
 	void UseItem(int item);
@@ -49,7 +49,8 @@ private:
 
 	void SetSubState(int st);
 	void NextGameTurn();
-
+	void InputMsg(string str = "", bool isNewPage = false);
+	int RandRange(int min , int max);
 public:
 	LARGE_INTEGER frequency ;
 	LARGE_INTEGER cur  ;
@@ -66,5 +67,10 @@ private:
 	string mTempStr = "";
 	int mState = 0;
 	int mSubState = 0;
+	vector<string> mStrArr;
+	string mStr = "";
+	Character*  mPlayer;
+	Monster*	mMonster;
+	int mMonsterHp = 10;
 };
 
