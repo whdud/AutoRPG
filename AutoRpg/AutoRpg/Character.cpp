@@ -1,75 +1,54 @@
-#include <iostream>
-<<<<<<< HEAD
 #include "Character.h"
-=======
-#include "Item.h"
->>>>>>> younghwanBranch(Character)
-
+#include <iostream>
 using namespace std;
 
-Character::Character()
-			:mName("Player"),
-			 mLevel(1),
-			 mMaxHp(10),
-			 mHp(mMaxHp),
-			 mAttack(2),
-			 mExperience(0),
-			 mGold(0)
-{
-	/*mName = "Player";
-	mLevel = 1;
-	mMaxHp = 10;
-	mHp = mMaxHp;
-	mAttack = 2;
-	mExperience = 0;
-	mGold = 0;*/
+Character::Character(const string& charName)
+    : mName(charName), mLevel(1), mMaxHp(100), mHp(100), mAttack(10), mExperience(0), mGold(0) {
 }
 
-void Character::displayStatus()
-{
-    cout << "\n--- " << mName << "'s Status ---\n";
-    cout << "Level: " << mLevel << "\nHP: " << mHp << "/" << mMaxHp << "\nAttack: " << mAttack << "\nGold: " << mGold << "\nExperience: " << mExperience << "\n";
-}
+string Character::getName() const { return mName; }
+void Character::setName(const string& name) { mName = name; }
 
-void Character::LevelUp()//레벨업 함수
-{
-    if (mLevel < 10) 
-    {
-        mLevel++; // 레벨 증가
-        mMaxHp += mLevel * 20; // 레벨에 따라 최대 체력 증가
-        mHp = mMaxHp; // 최대 체력으로 회복
-        mAttack += mLevel * 5; // 공격력 증가
-        cout << "레벨업! " << mLevel << "\n";
-    }
-    else
-    {
-        cout << "만렙입니다!!\n";
+int Character::getLevel() const { return mLevel; }
+void Character::setLevel(int level) { mLevel = level; }
+
+void Character::levelUp() {
+    if (mExperience >= 100 && mLevel < 10) {
+        mExperience -= 100;
+        mLevel++;
+        mMaxHp += mLevel * 20;
+        mHp = mMaxHp;
+        mAttack += mLevel * 5;
+        cout << "레벨업! 현재 레벨: " << mLevel << "\n";
     }
 }
 
-void Character::resetCharacter()//캐릭터 초기화(죽었을 떄)
-{
-	mName = "Player";
-	mLevel = 1;
-	mMaxHp = 10;
-	mHp = mMaxHp;
-	mAttack = 2;
-	mExperience = 0;
-	mGold = 0;
+void Character::addItem(shared_ptr<Item> item) {
+    mInventory.addItem(item);
 }
 
-Item::Item(const string& Itemname, int price) : mItemName(Itemname), mPrice(price) {}
-
-string Item::GetName() const
-{
-
-	return mItemName;
-
+void Character::useItem(int index) {
+    mInventory.useItem(index, *this);
 }
 
-int Item::GetPrice() const
-{
+void Character::displayStatus() const {
+    cout << "--- " << mName << " 상태 ---\n";
+    cout << "레벨: " << mLevel << "\n";
+    cout << "체력: " << mHp << "/" << mMaxHp << "\n";
+    cout << "공격력: " << mAttack << "\n";
+    cout << "골드: " << mGold << "\n";
+    cout << "경험치: " << mExperience << "\n";
+    mInventory.displayInventory();
+    cout << "-------------------------\n";
+}
 
-	return mPrice;
-
+void Character::resetCharacter() {
+    mLevel = 1;
+    mMaxHp = 100;
+    mHp = mMaxHp;
+    mAttack = 10;
+    mExperience = 0;
+    mGold = 0;
+    mInventory.clearInventory();
+    cout << "캐릭터가 초기화되었습니다.\n";
 }

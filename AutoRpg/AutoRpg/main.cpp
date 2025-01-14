@@ -8,9 +8,16 @@
 #include "troll.h"
 using namespace std;
 
+//영환이꺼 확인~
+int main() {
+    // 캐릭터 생성
+    Character player("Hero");
+    cout << "게임 시작! 캐릭터 생성 완료.\n";
+    player.displayStatus();
 
+   
 //깃허브 야발 ㅎㅇ
-int main(void)
+/*int main(void)
 {
 	//스마트포인터 이용?
 	Character* player = new Character();
@@ -33,8 +40,10 @@ int main(void)
 		//도전과제 10레벨 찍고 보스몬스터 나옴-> 클리어하면  while문 탈출
 
 	}
+	
 
 	
 
 	return 0;
 }
+*/
