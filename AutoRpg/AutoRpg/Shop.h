@@ -26,7 +26,7 @@ public:
 
 	// Buy item
 	void BuyItem(int index, Character& character);
-
+	
 };
 
 

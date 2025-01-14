@@ -8,8 +8,8 @@ using namespace std;
 Shop::Shop() 
 {
 
-	mAvailableItems.push_back(make_unique<HealthPotion>(10, 50));
-	mAvailableItems.push_back(make_unique<AttackBoost>(20, 10));
+	mAvailableItems.push_back(make_shared<HealthPotion>(10, 50));
+	mAvailableItems.push_back(make_shared<AttackBoost>(20, 10));
 
 }
 
