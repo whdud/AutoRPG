@@ -5,7 +5,7 @@
 #include <vector>
 class Monster;
 class Character;
-
+class BattleManager;
 
 class GameManger
 {
@@ -27,7 +27,11 @@ public:
 	//매니저에서 만드는 몬스터-> 매니저에서 관리할지
 	Monster*/*주소반환*/ GenerateMonster(int level);
 
+<<<<<<< HEAD
 
+=======
+	void SetBattleMgr(BattleManager* mgr);
+>>>>>>> sewonbranch(BattleSystem)
 	//배틀관리
 	void Battle(Character* player);
 
@@ -51,6 +55,10 @@ private:
 	//몬스터 벡터로 관리?
 	//std::vector<int> mMonsterVec;
 	Monster* mMonster;
+<<<<<<< HEAD
+=======
+	BattleManager* battleMgr;
+>>>>>>> sewonbranch(BattleSystem)
 };
 
 
