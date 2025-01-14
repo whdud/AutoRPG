@@ -80,7 +80,3 @@ private:
 	int mMonsterHp = 10;
 };
 
-class BattleManager
-{
-};
-

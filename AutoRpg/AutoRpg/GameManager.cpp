@@ -49,7 +49,7 @@ void GameManger::Battle(Character* player)
 	//배틀로직 
 	//턴제로 매니저에서 싸움
 	
-
+	
 
 	//상점으로 갈래? 
 	//스킵

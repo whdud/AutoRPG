@@ -9,19 +9,19 @@
 using namespace std;
 
 //영환이꺼 확인~
-int main() {
-    // 캐릭터 생성
-    Character player("Hero");
-    cout << "게임 시작! 캐릭터 생성 완료.\n";
-    player.DisplayStatus();
-	return 0;
-}
+//int main() {
+//    // 캐릭터 생성
+//    Character player("Hero");
+//    cout << "게임 시작! 캐릭터 생성 완료.\n";
+//    player.DisplayStatus();
+//	return 0;
+//}
    
 //깃허브 야발 ㅎㅇ
-/*int main(void)
+int main(void)
 {
 	//스마트포인터 이용?
-	Character* player = new Character();
+	Character* player = new Character("Player");
 
 	GameManger::GetInstance()->SetPlayer(player);
 	
@@ -31,6 +31,7 @@ int main() {
 	{
 		//몬스터 레벨입력후 랜덤 1마리 생성
 		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(10));
+
 
 		//만든 몬스터와 바로 배틀 ㄱㄱ 안에서 이겼으면 상점스킵 or 상점방문  
 		GET_SINGLE(GameManger)->Battle(player);
@@ -43,8 +44,6 @@ int main() {
 	}
 	
 
-	
-
 	return 0;
 }
-*/
+

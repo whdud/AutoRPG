@@ -121,7 +121,7 @@ void BattleManager::Close()
             if (1.f > mBattleTime)
                 return;
 
-            if (0 == mPlayer->getHp())
+            if (0 == mPlayer->GetHp())
             {
                 InputMsg(" ");
                 InputMsg("    ====  새로하기 : A / 종료하기 : Q  ====");
@@ -151,15 +151,15 @@ void BattleManager::UseItem(int item)
 {
     if (0 == item)
     {
-        int Hp = mPlayer->getHp() + 5;
+        int Hp = mPlayer->GetHp() + 5;
         Hp = 10 < Hp ? 10 : Hp;
-        mPlayer->setHp(Hp);
+        mPlayer->SetHp(Hp);
         InputMsg("        Use Item Hp +5!!");
     }
     else if (1 == item)
     {
-        int Power = mPlayer->getAttack() + 3;
-         mPlayer->setAttack(Power);
+        int Power = mPlayer->GetAttack() + 3;
+         mPlayer->SetAttack(Power);
         InputMsg("        Use Item Power +3!!");
     }
 }
@@ -170,7 +170,7 @@ void BattleManager::PlayerTurn()
     {
         case 0:
         {
-            if (0 == mPlayer->getHp())
+            if (0 == mPlayer->GetHp())
             {
                 SetState(BTTSTATE::DIE);
                 return;
@@ -212,9 +212,9 @@ void BattleManager::MonsterTurn()
                 InputMsg("     몬스터 공격!, 플레이어 방어 성공!");
             else
             {
-                int CurHp = mPlayer->getHp() - randAttack;
+                int CurHp = mPlayer->GetHp() - randAttack;
                 CurHp = CurHp < 0 ? 0 : CurHp;
-                mPlayer->setHp(CurHp);
+                mPlayer->SetHp(CurHp);
 
                 InputMsg("     몬스터 공격!, 플레이어 " + to_string(randAttack) + "의 데미지를 입다.");
             }
@@ -260,7 +260,7 @@ void BattleManager::PlayerWin()
             if (1.f > mBattleTime)
                 return;
             int Gold = 10;//RandRange(10, 100);
-            mPlayer->setGold(Gold);
+            mPlayer->SetGold(Gold);
             InputMsg("           ====== 골드/" + to_string(Gold) + " 획득! ====== ");
             SetSubState(mSubState + 1);
         }break;
@@ -270,7 +270,7 @@ void BattleManager::PlayerWin()
             if (1.f > mBattleTime)
                 return;
             int Exp = 50;//RandRange(10, 100);
-            mPlayer->setExperience(Exp);
+            mPlayer->SetExperience(Exp);
             InputMsg("           ====== 경험치/" + to_string(Exp) + " 획득! ====== ");
             SetState(BTTSTATE::CLOSE);
         }break;
@@ -346,7 +346,7 @@ void BattleManager::InputMsg(string str , bool isNewPage )
     cout << "                                                   " << endl;
     cout << "                                                   " << endl;
     cout << "===================================================" << endl;
-    cout << "Name:" << mPlayer->getName() << " HP:" << mPlayer->getMaxHp() << '/' << mPlayer->getHp() << "  Gold:" << mPlayer->getGold() <<
+    cout << "Name:" << mPlayer->GetName() << " HP:" << mPlayer->GetMaxHp() << '/' << mPlayer->GetHp() << "  Gold:" << mPlayer->GetGold() <<
             "  || Monster1:" << " HP:" << 10 << '/' << mMonsterHp <<  endl;
     cout << "===================================================" << endl;
     // cout << "\033[H";

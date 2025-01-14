@@ -25,7 +25,7 @@ public:
 
     int GetLevel() const;
     void SetLevel(int level);
-
+    void SetAttack(int attack);
     void LevelUp();
     void AddItem(shared_ptr<Item> item);
     void UseItem(int index);
@@ -36,5 +36,10 @@ public:
     void IncreaseAttack(int amount);
     int GetGold() const;
     void ReduceGold(int amount);
-
+    int GetAttack() const;
+    int GetHp() const;
+    void SetHp(int hp);
+    void SetGold(int gold);
+    int GetMaxHp() const;
+    void SetExperience(int exp);
 };

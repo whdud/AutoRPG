@@ -11,6 +11,36 @@ void Character::SetName(const string& name) { mName = name; }
 
 int Character::GetLevel() const { return mLevel; }
 void Character::SetLevel(int level) { mLevel = level; }
+void Character::SetAttack(int attack)
+{
+    mAttack = attack;
+}
+int Character::GetAttack() const { return mAttack; }
+
+int Character::GetHp() const
+{
+    return mHp;
+}
+
+void Character::SetHp(int hp)
+{
+    mHp = hp;
+}
+
+void Character::SetGold(int gold)
+{
+    mGold = gold;
+}
+
+int Character::GetMaxHp() const
+{
+    return mMaxHp;
+}
+
+void Character::SetExperience(int exp)
+{
+    mExperience = exp;
+}
 
 void Character::LevelUp() {
     if (mExperience >= 100 && mLevel < 10) {
