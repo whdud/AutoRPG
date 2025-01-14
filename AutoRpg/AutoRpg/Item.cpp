@@ -1,17 +1,9 @@
 #include "Item.h"
 
-Item::Item(const string& Itemname, int price) : mItemName(Itemname), mPrice(price) {}
-
-string Item::GetName() const 
+Item::Item()
 {
-
-	return mItemName;
-
 }
 
-int Item::GetPrice() const
+Item::~Item()
 {
-
-	return mPrice;
-
 }

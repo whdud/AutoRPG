@@ -2,10 +2,6 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "troll.h"
-<<<<<<< HEAD
-=======
-#include "BattleManager.h"
->>>>>>> sewonbranch(BattleSystem)
 GameManger::GameManger()
 {
 	std::cout << "게임 매니저 실행 테스트...\n" << std::endl;
@@ -35,14 +31,6 @@ Monster* GameManger::GenerateMonster(int level)
 	return randomMonster;
 }
 
-<<<<<<< HEAD
-=======
-void GameManger::SetBattleMgr(BattleManager* mgr)
-{
-	battleMgr = mgr;
-}
-
->>>>>>> sewonbranch(BattleSystem)
 
 void GameManger::SetMonster(Monster* monster)
 {
@@ -60,11 +48,7 @@ void GameManger::Battle(Character* player)
 {
 	//배틀로직 
 	//턴제로 매니저에서 싸움
-<<<<<<< HEAD
 	
-=======
-	battleMgr->Update(player, NULL);
->>>>>>> sewonbranch(BattleSystem)
 
 
 	//상점으로 갈래? 

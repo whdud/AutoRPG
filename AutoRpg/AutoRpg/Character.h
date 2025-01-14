@@ -34,15 +34,9 @@ public:
     // 골드 게터와 세터
     int getGold() const { return mGold; }
     void setGold(int gold) { mGold = gold; }
-<<<<<<< HEAD
 
 	void displayStatus();// 스테이터스 출력
 	void resetCharacter();// 캐릭터 초기화(죽었을 떄)
-=======
-protected:
-    void displayStatus();
-	void resetCharacter();
->>>>>>> sewonbranch(BattleSystem)
 
 private:
     string  mName;

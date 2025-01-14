@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BattleManager.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -27,7 +26,6 @@
     <ClCompile Include="troll.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BattleManager.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="GameManager.h" />
