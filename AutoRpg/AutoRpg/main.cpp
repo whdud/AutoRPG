@@ -13,7 +13,7 @@ int main() {
     // 캐릭터 생성
     Character player("Hero");
     cout << "게임 시작! 캐릭터 생성 완료.\n";
-    player.displayStatus();
+    player.DisplayStatus();
 	return 0;
 }
    

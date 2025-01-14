@@ -1,11 +1,11 @@
 #include "Inventory.h"
 #include "Character.h"
 
-void Inventory::addItem(shared_ptr<Item> item) {
+void Inventory::AddItem(shared_ptr<Item> item) {
     mItems.push_back(item);
 }
 
-void Inventory::useItem(int index, Character& character) {
+void Inventory::UseItem(int index, Character& character) {
     if (index >= 0 && index < mItems.size()) {
         mItems[index]->use(character);
         mItems.erase(mItems.begin() + index);
@@ -15,7 +15,7 @@ void Inventory::useItem(int index, Character& character) {
     }
 }
 
-void Inventory::displayInventory() const {
+void Inventory::DisplayInventory() const {
     cout << "인벤토리:\n";
     for (size_t i = 0; i < mItems.size(); ++i) {
         cout << i + 1 << ". " << mItems[i]->GetName() << " (가격: " << mItems[i]->GetPrice() << ")\n";
@@ -25,6 +25,6 @@ void Inventory::displayInventory() const {
     }
 }
 
-void Inventory::clearInventory() {
+void Inventory::ClearInventory() {
     mItems.clear();
 }
