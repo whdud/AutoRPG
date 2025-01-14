@@ -1,5 +1,9 @@
 #include <iostream>
+<<<<<<< HEAD
 #include "Character.h"
+=======
+#include "Item.h"
+>>>>>>> younghwanBranch(Character)
 
 using namespace std;
 
@@ -52,4 +56,20 @@ void Character::resetCharacter()//캐릭터 초기화(죽었을 떄)
 	mAttack = 2;
 	mExperience = 0;
 	mGold = 0;
+}
+
+Item::Item(const string& Itemname, int price) : mItemName(Itemname), mPrice(price) {}
+
+string Item::GetName() const
+{
+
+	return mItemName;
+
+}
+
+int Item::GetPrice() const
+{
+
+	return mPrice;
+
 }
