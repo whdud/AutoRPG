@@ -2,6 +2,8 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "troll.h"
+#include "BattleManager.h"
+
 GameManger::GameManger()
 {
 	std::cout << "게임 매니저 실행 테스트...\n" << std::endl;
@@ -43,13 +45,18 @@ Monster* GameManger::GetMonster()
 	return nullptr;
 }
 
+void GameManger::SetBattleMgr(BattleManager* bttmgr)
+{
+	battleMgr = bttmgr;
+}
+
 
 void GameManger::Battle(Character* player)
 {
 	//배틀로직 
 	//턴제로 매니저에서 싸움
 	
-	
+	battleMgr->Update(player, NULL);
 
 	//상점으로 갈래? 
 	//스킵

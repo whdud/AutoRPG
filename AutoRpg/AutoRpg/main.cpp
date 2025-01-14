@@ -6,6 +6,7 @@
 #include "Character.h"
 #include "Monster.h"
 #include "troll.h"
+#include "BattleManager.h"
 using namespace std;
 
 //영환이꺼 확인~
@@ -25,16 +26,20 @@ int main(void)
 
 	GameManger::GetInstance()->SetPlayer(player);
 	
-	
+	BattleManager* bttMgr = new BattleManager();
+
+	GameManger::GetInstance()->SetBattleMgr(bttMgr);
 	
 	while (true)
 	{
 		//몬스터 레벨입력후 랜덤 1마리 생성
 		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(10));
 
-
+		while (true) {
+			GET_SINGLE(GameManger)->Battle(player);
+		}
 		//만든 몬스터와 바로 배틀 ㄱㄱ 안에서 이겼으면 상점스킵 or 상점방문  
-		GET_SINGLE(GameManger)->Battle(player);
+		
 		//상점 가는 코드
 		// 
 

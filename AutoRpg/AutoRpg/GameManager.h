@@ -5,7 +5,7 @@
 #include <vector>
 class Monster;
 class Character;
-
+class BattleManager;
 
 class GameManger
 {
@@ -39,7 +39,7 @@ public:
 
 	//몬스터 주소 얻어오기
 	Monster* GetMonster();
-
+	void SetBattleMgr(BattleManager* bttmgr);
 
 public:
 	GameManger();
@@ -51,6 +51,7 @@ private:
 	//몬스터 벡터로 관리?
 	//std::vector<int> mMonsterVec;
 	Monster* mMonster;
+	BattleManager* battleMgr;
 };
 
 
