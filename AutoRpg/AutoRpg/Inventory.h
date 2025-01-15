@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <vector>
 #include <memory>
 #include <iostream>
@@ -9,6 +9,8 @@ using namespace std;
 class Character;
 
 class Inventory {
+
+//인벤토리 생성자 필요!!! 
 private:
     vector<shared_ptr<Item>> mItems;
 

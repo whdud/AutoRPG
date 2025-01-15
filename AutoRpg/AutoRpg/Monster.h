@@ -18,7 +18,7 @@ protected:
     int mAttack;     // 몬스터 공격력
 
 public:
-    Monster(int level);
+    explicit Monster(int level);
 
     string GetName() const;
     int GetMonsterHp() const;

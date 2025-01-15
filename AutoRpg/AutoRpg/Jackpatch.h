@@ -3,7 +3,7 @@
 
 class Jackpatch : public Monster {
 public:
-    Jackpatch(int level);
+    explicit Jackpatch(int level);
 
 public:
     virtual string Monster::GetAsciiArt() const override{ return mAsciiArt; }

@@ -18,7 +18,7 @@ private:
     Inventory mInventory; // 인벤토리 객체
 
 public:
-    Character(const string& charName);
+    explicit Character(const string& charName);
 
     string GetName() const;
     void SetName(const string& name);

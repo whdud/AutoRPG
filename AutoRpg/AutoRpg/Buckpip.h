@@ -3,7 +3,7 @@
 
 class Buckpip : public Monster {
 public:
-    Buckpip(int level);
+    explicit Buckpip(int level);
 public:
     virtual string Monster::GetAsciiArt() const override { return mAsciiArt; }
 private:
