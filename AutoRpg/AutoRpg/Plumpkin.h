@@ -3,7 +3,7 @@
 
 class Plumpkin : public Monster {
 public:
-    Plumpkin(int level);
+    explicit Plumpkin(int level);
 public:
     virtual string Monster::GetAsciiArt() const override { return mAsciiArt; }
 private:

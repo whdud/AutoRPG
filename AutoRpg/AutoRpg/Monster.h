@@ -10,7 +10,7 @@ protected:
    
 
 public:
-    Monster(int level);
+    explicit Monster(int level);
 
     string GetName() const;
     int GetMonsterHp() const;
