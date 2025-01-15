@@ -32,7 +32,6 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Plumpkin.cpp" />
     <ClCompile Include="Shop.cpp" />
-    <ClCompile Include="troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AttackBoost.h" />
@@ -48,7 +47,6 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Plumpkin.h" />
     <ClInclude Include="Shop.h" />
-    <ClInclude Include="troll.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

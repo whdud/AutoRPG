@@ -1,9 +1,12 @@
 ﻿#include <iostream>
 #include "GameManager.h"
 #include "Character.h"
-#include "troll.h"
 #include "BattleManager.h"
-
+#include "Monster.h"
+#include "Plumpkin.h"
+#include "Buckpip.h"
+#include "Jackpatch.h"
+#include <random>
 GameManger::GameManger()
 {
 	std::cout << "게임 매니저 실행 테스트...\n" << std::endl;
@@ -27,9 +30,32 @@ Monster* GameManger::GenerateMonster(int level)
 	- 몬스터 스펙은 캐릭터 레벨에 비례해서 랜덤하게 생성:
 	- 체력: (레벨 × 20) ~ (레벨 × 30)
 	- 공격력: (레벨 × 5) ~ (레벨 × 10)
-
 */
-	Monster* randomMonster = new Monster;
+	std::random_device rd;
+
+	// random_device 를 통해 난수 생성 엔진을 초기화 한다.
+	std::mt19937 gen(rd());
+
+	// 0 부터 99 까지 균등하게 나타나는 난수열을 생성하기 위해 균등 분포 정의.
+	std::uniform_int_distribution<int> dis(0, 99);
+
+	int randomNum = dis(gen) % 3;
+	Monster* randomMonster = nullptr;
+
+	switch (randomNum)
+	{
+	case 0: 
+		randomMonster = new Plumpkin(level);
+		break;
+	case 1:
+		randomMonster = new Buckpip(level);
+		break;
+	case 2:
+		randomMonster = new Jackpatch(level);
+		break;
+	default:
+		break;
+	}
 	return randomMonster;
 }
 
@@ -56,7 +82,7 @@ void GameManger::Battle(Character* player)
 	//배틀로직 
 	//턴제로 매니저에서 싸움
 	
-	battleMgr->Update(player, NULL);
+	battleMgr->Update(player, mMonster);
 
 	//상점으로 갈래? 
 	//스킵

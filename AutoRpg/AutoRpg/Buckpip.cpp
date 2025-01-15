@@ -2,8 +2,8 @@
 
 
 Buckpip::Buckpip(int level)
-    : Monster(level, "Buckpip",
-        R"(
+    : Monster(level), 
+        mAsciiArt(R"(
 "                                                     ",
 "                  █  ██                              ",      
 "               ▒▓▓▓▓▓▓▓▓░░                           ",    
@@ -31,5 +31,7 @@ Buckpip::Buckpip(int level)
 "                       ░     ░                       ",
 "                    ░░▒▒    ░░░▓                     ",
 "                                                     "
-        )") {
+        )")
+{
+
 }

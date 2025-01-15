@@ -2,8 +2,8 @@
 
 
 Plumpkin::Plumpkin(int level)
-    : Monster(level, "Plumpkin",
-        R"(
+    : Monster(level),
+    mAsciiArt(R"(
 "                 ▒▒▒▒▒                   ",
 "                 ▒▒▒                     ",
 "        ████████   ▒▒   █████████▒       ",
@@ -19,5 +19,9 @@ Plumpkin::Plumpkin(int level)
 "     ▒█▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ",
 "          ▒▒▒▒▒     ▒▒▒▒▒  ▒▒▒▒▒▒▒       ",
 "                                         "
-        )") {
+        )")
+    
+{
+    
+
 }

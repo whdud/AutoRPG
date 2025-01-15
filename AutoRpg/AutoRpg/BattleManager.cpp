@@ -349,6 +349,8 @@ void BattleManager::InputMsg(string str , bool isNewPage )
     cout << "Name:" << mPlayer->GetName() << " HP:" << mPlayer->GetMaxHp() << '/' << mPlayer->GetHp() << "  Gold:" << mPlayer->GetGold() <<
             "  || Monster1:" << " HP:" << 10 << '/' << mMonsterHp <<  endl;
     cout << "===================================================" << endl;
+    
+   
     // cout << "\033[H";
      //system("cls");
 }

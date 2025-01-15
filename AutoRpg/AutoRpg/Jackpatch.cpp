@@ -3,8 +3,8 @@
 
 
 Jackpatch::Jackpatch(int level)
-    : Monster(level, "Jackpatch",
-        R"(
+    : Monster(level),
+      mAsciiArt(R"(
 "               ▓▓▒▒             ",
 "                 ▓▓▒▒  ▒▒       ",
 "                     ▓▓         ",
@@ -32,5 +32,6 @@ Jackpatch::Jackpatch(int level)
 "     ▓▓▓▓██▓▓  ▓▓▓▓▓▓           ",
 "  ▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓▓▓          ",
 " ▒▒▒▒▒▒▒▒▒▒      ▒▒▒▒▒▒▒▒▒      ",
-"                                "        )") {
+"                                "        )") 
+{
 }

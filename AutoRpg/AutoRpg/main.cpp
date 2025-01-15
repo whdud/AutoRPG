@@ -5,7 +5,6 @@
 #include "GameManager.h"
 #include "Character.h"
 #include "Monster.h"
-#include "troll.h"
 #include "BattleManager.h"
 using namespace std;
 
@@ -33,7 +32,7 @@ int main(void)
 	while (true)
 	{
 		//몬스터 레벨입력후 랜덤 1마리 생성
-		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(10));
+		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(5));
 
 		while (true) {
 			GET_SINGLE(GameManger)->Battle(player);

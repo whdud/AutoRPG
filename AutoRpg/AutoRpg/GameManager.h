@@ -47,11 +47,11 @@ public:
 
 private:
 	//플레이어 관리
-	Character* mMyCharPtr;
+	Character* mMyCharPtr = nullptr;
 	//몬스터 벡터로 관리?
 	//std::vector<int> mMonsterVec;
-	Monster* mMonster;
-	BattleManager* battleMgr;
+	Monster* mMonster = nullptr;
+	BattleManager* battleMgr = nullptr;
 };
 
 
