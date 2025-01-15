@@ -28,6 +28,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Plumpkin.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="troll.cpp" />
   </ItemGroup>
@@ -41,6 +42,7 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="Plumpkin.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="troll.h" />
   </ItemGroup>
