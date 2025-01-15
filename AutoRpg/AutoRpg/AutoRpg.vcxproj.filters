@@ -51,6 +51,12 @@
     <ClCompile Include="Plumpkin.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Buckpip.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Jackpatch.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -87,6 +93,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Plumpkin.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Buckpip.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Jackpatch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

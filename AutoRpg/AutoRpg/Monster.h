@@ -10,7 +10,7 @@ protected:
     string mAsciiArt; // ASCII 아트 문자열
 
 public:
-    Monster(int level, const string& type, const string& asciiArt);
+    Monster(int level, const string& typ, const string& asciiArt);
 
     string GetName() const;
     int GetMonsterHp() const;
