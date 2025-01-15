@@ -93,6 +93,7 @@ void BattleManager::Ready()
             {
                 InputMsg("   ",true);
                 InputMsg("   ");
+                InputMsg(mMonster->GetAsciiArt()); // 몬스터 ASCII 아트 출력
                 InputMsg("        ========== BATTLE START ==========");
                 SetSubState(mSubState+1);
             }
@@ -140,6 +141,7 @@ void BattleManager::Close()
     case CLOSESTATE::cWIN: break;
     case CLOSESTATE::cDELAY: break;
     }
+
 }
 
 void BattleManager::ReadyBattle()

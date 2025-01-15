@@ -7,5 +7,5 @@ public:
 public:
     virtual string Monster::GetAsciiArt() const override { return mAsciiArt; }
 private:
-    string mAsciiArt; // ASCII ¾ÆÆ® ¹®ÀÚ¿­
+    string mAsciiArt; // ASCII ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ú¿ï¿½
 };
