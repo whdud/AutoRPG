@@ -19,6 +19,8 @@ enum BTTSTATE
 	PLAYER,
 	WIN,
 	DIE,
+	STORE,
+	STATUS,
 	CLOSE,
 };
 enum CLOSESTATE
@@ -28,7 +30,12 @@ enum CLOSESTATE
 	cWIN,
 	cDELAY
 };
-
+enum BTTRESULT
+{
+	rEMPTY,
+	rWIN,
+	rFAIL
+};
 class BattleManager
 {
 public:
@@ -51,12 +58,19 @@ private:
 	void MonsterTurn();
 	void PlayerWin();
 	void PlayerDie();
+	void Store();
+	void Status();
 	void Close();
 
 	void SetSubState(int st);
 	void NextGameTurn();
-	void InputMsg(string str = "", bool isNewPage = false);
+	void OutputMsg(  string str = "" , bool isNewPage = false);
+	void InputMsg(string str );
+
 	int RandRange(int min , int max);
+	void CleanScreen();
+	int DropItem();
+	
 public:
 	LARGE_INTEGER frequency ;
 	LARGE_INTEGER cur  ;
@@ -68,15 +82,16 @@ public:
 	int fpsCounter = 0;
 
 private:
-	vector<Monster*> mMonList;
-	BTTSTATE mCurrentTurn = BTTSTATE::EMPTY;
-	string mTempStr = "";
-	int mState = 0;
+	BTTSTATE mGameState = BTTSTATE::EMPTY;
+	BTTSTATE mPrvGameState = BTTSTATE::EMPTY;
+	BTTRESULT mEBTTReult = BTTRESULT::rEMPTY;
 	int mSubState = 0;
+
 	vector<string> mStrArr;
-	string mStr = "";
+
 	Character*  mPlayer;
 	Monster*	mMonster;
 	int mMonsterHp = 10;
+
 };
 
