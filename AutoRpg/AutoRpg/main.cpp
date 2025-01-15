@@ -20,6 +20,7 @@ using namespace std;
 //깃허브 야발 ㅎㅇ
 int main(void)
 {
+	system("color 0A");
 	//스마트포인터 이용?
 	Character* player = new Character("Player");
 
