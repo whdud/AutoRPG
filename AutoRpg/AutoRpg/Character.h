@@ -42,4 +42,6 @@ public:
     void SetGold(int gold);
     int GetMaxHp() const;
     void SetExperience(int exp);
+    bool IsHealthPotion() const;
+    bool IsAttackBoost() const;
 };

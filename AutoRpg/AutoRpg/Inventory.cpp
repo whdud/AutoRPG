@@ -1,5 +1,7 @@
 #include "Inventory.h"
 #include "Character.h"
+#include "HealthPotion.h"
+#include "AttackBoost.h"
 
 void Inventory::AddItem(shared_ptr<Item> item) {
     mItems.push_back(item);
@@ -27,4 +29,21 @@ void Inventory::DisplayInventory() const {
 
 void Inventory::ClearInventory() {
     mItems.clear();
+}
+bool Inventory::IsHealthPotion() const {
+    for (const auto& item : mItems) {
+        if (dynamic_cast<HealthPotion*>(item.get())) { // HealthPotion인지 확인
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Inventory::IsAttackBoost() const {
+    for (const auto& item : mItems) {
+        if (dynamic_cast<AttackBoost*>(item.get())) { // AttackBoost인지 확인
+            return true;
+        }
+    }
+    return false;
 }

@@ -132,6 +132,7 @@ void BattleManager::Ready()
             mBattleTime += GetDeltaTime();
             if (1.f < mBattleTime)
             {
+               
                 mMonsterHp = 10;//temp
                 CleanScreen();
                 InputMsg("  ");
@@ -198,13 +199,25 @@ void BattleManager::UseItem(int item)
 {
     if (0 == item) //inventory
     {
-        mPlayer->UseItem(0);
-        OutputMsg("        Use Item Hp +5!!");
+        bool isItem = mPlayer->IsHealthPotion();
+        if (isItem)
+        {
+            mPlayer->UseItem(0);
+            OutputMsg("        Use Item Hp +5!!");
+        }
+        else
+            OutputMsg("        Error! Empty Item!!");
     }
     else if (1 == item) //inventory
     {
-        mPlayer->UseItem(1);
-        OutputMsg("        Use Item Power +3!!");
+        bool isItem = mPlayer->IsAttackBoost();
+        if (isItem)
+        {
+            mPlayer->UseItem(1);
+            OutputMsg("        Use Item AttackBoost!!");
+        }
+        else
+            OutputMsg("        Error! Empty Item!!");
     }
 }
 
@@ -387,14 +400,11 @@ void BattleManager::Store()
         //InputMsg("                ====== 구매 ======");
         //InputMsg("    ==== HealthPotion : A / AttackBoost : S ====");
         //InputMsg(" ");
-        //InputMsg(" ");
-     
+
         //InputMsg("           ====  보유 아이템 목록  ====");
         //InputMsg("        HealthPotion: " + to_string(HealthPotion) + " 개" + " attackBoost: " + to_string(attackBoost) + " 개");
         //InputMsg(" ");
-        //InputMsg(" ");
-        //InputMsg(" ");
-        //InputMsg(" ");
+     
         //OutputMsg("                              === 돌아가기: q ===");
        
 
@@ -437,14 +447,16 @@ void BattleManager::OutputMsg( string str, bool isNewPage )
     if (isNewPage)
     {
         mStrArr.clear();
+       // cout << "CLSCLSCLSCLSCLSCLSCLSCLSCLSCLSCLSCLSCLSCLSCLS"<<endl;
         return;
     }
     if (str == "")
         return;
+    cout << mMonster->GetAsciiArt() << endl;
 
     mStrArr.push_back(str);
 
-    size_t lineMax = 15;
+    size_t lineMax = 10;
     int lineOver = mStrArr.size() - lineMax;
 
     for (int i = 0; i < lineOver;++i)
@@ -456,7 +468,8 @@ void BattleManager::OutputMsg( string str, bool isNewPage )
     size_t lineAdd = lineMax - mStrArr.size();
     for (int i = 0; i < lineAdd;++i)
         cout << "\n";
-    cout << "                                                    " << endl;
+
+    
     cout << "                                                    " << endl;
     cout << "====================================================" << endl;
     if (BTTSTATE::PLAYER >= mGameState)

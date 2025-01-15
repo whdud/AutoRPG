@@ -36,6 +36,7 @@ int main(void)
 		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(5));
 
 		while (true) {
+
 			GET_SINGLE(GameManger)->Battle(player);
 		}
 		//만든 몬스터와 바로 배틀 ㄱㄱ 안에서 이겼으면 상점스킵 or 상점방문  
@@ -44,9 +45,7 @@ int main(void)
 
 		// 
 
-
 		//도전과제 10레벨 찍고 보스몬스터 나옴-> 클리어하면  while문 탈출
-
 	}
 	
 

@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Inventory.h"
 #include <iostream>
 using namespace std;
 
@@ -40,6 +41,16 @@ int Character::GetMaxHp() const
 void Character::SetExperience(int exp)
 {
     mExperience = exp;
+}
+
+bool Character::IsAttackBoost() const
+{
+    return mInventory.IsAttackBoost();
+}
+
+bool Character::IsHealthPotion() const
+{
+    return mInventory.IsHealthPotion();
 }
 
 void Character::LevelUp() {

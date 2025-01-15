@@ -19,4 +19,6 @@ public:
     void UseItem(int index, Character& character);
     void DisplayInventory() const;
     void ClearInventory();
+    bool IsHealthPotion() const;
+    bool IsAttackBoost() const;
 };
