@@ -10,6 +10,7 @@ using namespace std;
 
 class Character;
 class Monster;
+class Shop;
 
 enum BTTSTATE
 {
@@ -91,6 +92,7 @@ private:
 
 	Character*  mPlayer;
 	Monster*	mMonster;
+	Shop*		mShop;
 	int mMonsterHp = 10;
 
 };

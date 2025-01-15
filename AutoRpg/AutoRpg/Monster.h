@@ -27,6 +27,4 @@ public:
     virtual string GetAsciiArt() const =0; // ASCII 아트 반환
     virtual ~Monster() {}
 
-    void DropItem(Character& character); // Drop Item
-
 };

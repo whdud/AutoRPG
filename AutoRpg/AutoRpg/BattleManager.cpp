@@ -4,15 +4,20 @@
 #include "Item.h"
 #include "AttackBoost.h"
 #include "HealthPotion.h"
+#include "Shop.h"
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
 #include <string>
 #include <random>
+
 BattleManager::BattleManager()
 {
     QueryPerformanceFrequency(&frequency); // 한번만 읽어들이면 된다.
     QueryPerformanceCounter(&prevFrame); // 이전틱 기억
+
+    mShop = new Shop;
+
 }
 
 BattleManager::~BattleManager()
@@ -368,6 +373,10 @@ void BattleManager::Store()
     }break;
     case 1:
     {
+        int a;
+        mShop->DisplayItems();
+        cin >> a;
+        mShop->BuyItem(a-1, *mPlayer);
         //int HealthPotion = 5;//Load Shop!
         //int attackBoost = 5;//Load Shop!
         //CleanScreen();
@@ -485,31 +494,26 @@ int BattleManager::DropItem()
 {
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<>dist(1, 100);
-    int DropPercent = dist(gen);
     int ItemType = 0;
-    if (DropPercent <= 30)
+    uniform_int_distribution<> ItemDist(1, 2);
+    ItemType = ItemDist(gen);
+
+    shared_ptr<Item> DroppedItem;
+    if (ItemType == 1)
     {
-        uniform_int_distribution<> ItemDist(1, 2);
-        ItemType = ItemDist(gen);
 
-        shared_ptr<Item> DroppedItem;
-        if (ItemType == 1)
-        {
-
-            DroppedItem = make_shared<HealthPotion>(10, 50);
-
-        }
-        else if (ItemType == 2)
-        {
-
-            DroppedItem = make_shared<AttackBoost>(20, 10);
-
-        }
-
-        mPlayer->AddItem(DroppedItem);
+        DroppedItem = make_shared<HealthPotion>(10, 50);
 
     }
+    else if (ItemType == 2)
+    {
+
+        DroppedItem = make_shared<AttackBoost>(20, 10);
+
+    }
+
+    mPlayer->AddItem(DroppedItem);
+
     return ItemType;
 }
 
