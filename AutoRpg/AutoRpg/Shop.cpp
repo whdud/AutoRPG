@@ -46,7 +46,7 @@ void Shop::BuyItem(int index, Character& character)
 	character.AddItem(selectedItem);
 
 	cout << "Item purchased successfully" << endl;
-
+	cout << "Press Q" << endl;
 }
 
 void Shop::SellItems(int index, Character& character) {
@@ -67,5 +67,5 @@ void Shop::SellItems(int index, Character& character) {
 	inventory.RemoveItem(index);
 	
 	cout << "Sold " << itemsell->GetName() << " for " << SellPrice << " Gold" << endl;
-
+	cout << "Press Q" << endl;
 }
