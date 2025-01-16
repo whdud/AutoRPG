@@ -397,7 +397,7 @@ void BattleManager::Store()
         {
             cout << "sell the item" << endl;
             int b;
-            mPlayer->GetInventory();
+            mPlayer->GetInventory().DisplayInventory();
             cin >> b;
             mShop->SellItems(b - 1, *mPlayer);
 
