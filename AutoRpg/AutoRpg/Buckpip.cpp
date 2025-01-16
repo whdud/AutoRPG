@@ -1,5 +1,5 @@
 #include "Buckpip.h"
-
+#include "defines.h"
 
 Buckpip::Buckpip(int level)
     : Monster(level), 

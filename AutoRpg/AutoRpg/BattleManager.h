@@ -5,6 +5,7 @@
 #include <chrono>
 #include <conio.h> 
 #include <vector>
+#include "defines.h"
 
 using namespace std;
 
@@ -45,7 +46,7 @@ public:
 	BattleManager();
 	~BattleManager();
 public:
-	BTTRESULT Update(Character* player);
+	BTTRESULT Update(TSharedPtr<Character>  player);
 	void ReadyBattle(Monster* monster);
 
 	//게임중에 아이템 먹기.
@@ -93,10 +94,10 @@ private:
 
 	vector<string> mStrArr;
 
-	Character*  mPlayer;
-	Monster*	mMonster;
-	Shop*		mShop;
-	Inventory*	mInventory;
+	TSharedPtr<Character>  mPlayer;
+	TSharedPtr<Monster>	mMonster;
+	TSharedPtr<Shop>		mShop;
+	TSharedPtr<Inventory>	mInventory;
 
 	int mMonsterHp = 10;
 

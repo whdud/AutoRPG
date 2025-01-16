@@ -2,12 +2,12 @@
 #include "Character.h"
 #include "HealthPotion.h"
 #include "AttackBoost.h"
-
+#include "defines.h"
 void Inventory::AddItem(shared_ptr<Item> item) {
     mItems.push_back(item);
 } 
 
-void Inventory::UseItem(int index, Character& character) {
+void Inventory::UseItem(int index, TSharedRef<Character> character) {
     if (index >= 0 && index < mItems.size()) {
         mItems[index]->Use(character);
         mItems.erase(mItems.begin() + index);
@@ -54,7 +54,7 @@ bool Inventory::IsAttackBoost() const {
     return false;
 }
 
-const vector<shared_ptr<Item>>& Inventory::GetItems() const {
+const TSharedRef<vector<shared_ptr<Item>>> Inventory::GetItems() const {
 
     return mItems;
 

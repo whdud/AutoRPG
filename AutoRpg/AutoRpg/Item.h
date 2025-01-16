@@ -26,7 +26,7 @@ public:
 	virtual ~Item() = default;
 
 	//	pure virtual function
-	virtual void Use(Character& character) = 0;
+	virtual void Use(TSharedRef<Character> character) = 0;
 
 	//	Item Name
 	string GetName() const;

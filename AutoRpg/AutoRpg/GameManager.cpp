@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "defines.h"
 #include "GameManager.h"
 #include "Character.h"
 #include "BattleManager.h"
@@ -16,14 +17,14 @@ GameManger::~GameManger()
 {
 }
 
-void GameManger::SetPlayer(Character* player)
+void GameManger::SetPlayer(TSharedPtr<Character> player)
 {
 	std::cout << "게임 매니저 실행 테스트...\n" << std::endl;
 	mMyCharPtr = player;
 	std::cout << "플레이어 이름: "<<mMyCharPtr->GetName() << std::endl; //플레이어 겟으로 정보 가져오기 private
 }
 
-Monster* GameManger::GenerateMonster(int level)
+TSharedPtr<Monster> GameManger::GenerateMonster(int level)
 {
 /*
 	- 몬스터도 이름, 체력, 공격력을 가집니다.
@@ -40,7 +41,7 @@ Monster* GameManger::GenerateMonster(int level)
 	std::uniform_int_distribution<int> dis(0, 99);
 
 	int randomNum = dis(gen) % 3;
-	Monster* randomMonster = nullptr;
+	TSharedPtr<Monster> randomMonster = nullptr;
 
 	switch (randomNum)
 	{
@@ -60,7 +61,7 @@ Monster* GameManger::GenerateMonster(int level)
 }
 
 
-void GameManger::SetMonster(Monster* monster)
+void GameManger::SetMonster(TSharedPtr<Monster>monster)
 {
 	//현재 몬스터에 등록 
 	mMonster = monster;
@@ -68,18 +69,18 @@ void GameManger::SetMonster(Monster* monster)
 
 
 
-Monster* GameManger::GetMonster()
+TSharedPtr<Monster> GameManger::GetMonster()
 {
 	return mMonster;
 }
 
-void GameManger::SetBattleMgr(BattleManager* bttmgr)
+void GameManger::SetBattleMgr(TSharedPtr<BattleManager>  bttmgr)
 {
 	battleMgr = bttmgr;
 }
 
 
-int GameManger::Battle(Character* player)
+int GameManger::Battle(TSharedPtr<Character> player)
 {
 	//배틀로직 
 	//턴제로 매니저에서 싸움
@@ -95,6 +96,6 @@ void GameManger::StartBattle()
 	battleMgr->ReadyBattle(mMonster);
 }
 
-void GameManger::DisplayInventory(Character* player)
+void GameManger::DisplayInventory(TSharedPtr<Character>  player)
 {
 }

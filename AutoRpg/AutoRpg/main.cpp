@@ -38,7 +38,8 @@ int main(void)
 		else
 			break;
 	}
-	Character* player = new Character(playerName);
+	Character
+		player = new Character(playerName);
 
 	GameManger::GetInstance()->SetPlayer(player);
 	

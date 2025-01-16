@@ -2,7 +2,7 @@
 #include "HealthPotion.h"
 #include "AttackBoost.h"
 #include <iostream>
-
+#include "defines.h"
 using namespace std;
 
 Shop::Shop() 
@@ -27,7 +27,7 @@ void Shop::DisplayItems() const
 
 }
 
-void Shop::BuyItem(int index, Character& character)
+void Shop::BuyItem(int index, TSharedRef<Character> character)
 {
 	if (index < 0 || index >= static_cast<int>(mAvailableItems.size()))
 	{
@@ -49,7 +49,7 @@ void Shop::BuyItem(int index, Character& character)
 	cout << "Press Q" << endl;
 }
 
-void Shop::SellItems(int index, Character& character) {
+void Shop::SellItems(int index, TSharedRef<Character> character) {
 
 	if (index < 0 || index >= static_cast<int>(mAvailableItems.size())) 
 	{

@@ -25,9 +25,9 @@ public:
 	void DisplayItems() const;
 
 	// Buy item
-	void BuyItem(int index, Character& character);
+	void BuyItem(int index, TSharedRef<Character> character);
 	
-	void SellItems(int index, Character& character);
+	void SellItems(int index, TSharedRef<Character> character);
 
 };
 

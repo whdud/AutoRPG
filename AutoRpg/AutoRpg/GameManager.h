@@ -2,6 +2,7 @@
 /*
 헤더파일 참조를 최소화 하기 위해 전방선언 했습니다.
 */
+#include "defines.h"
 #include <vector>
 class Monster;
 class Character;
@@ -22,25 +23,25 @@ public:
 	}
 
 public:
-	void SetPlayer(Character* player);
+	void SetPlayer(TSharedPtr<Character> player);
 
 	//매니저에서 만드는 몬스터-> 매니저에서 관리할지
-	Monster*/*주소반환*/ GenerateMonster(int level);
+	TSharedPtr<Monster>/*주소반환*/ GenerateMonster(int level);
 
 
 	//배틀관리
-	int Battle(Character* player);
+	int Battle(TSharedPtr<Character> player);
 	void StartBattle();
 	//인벤토리display
-	void DisplayInventory(Character* player);
+	void DisplayInventory(TSharedPtr<Character>  player);
 
 	//게임 매니저에 몬스터 넣기
-	void SetMonster(Monster* monster);
+	void SetMonster(TSharedPtr<Monster>monster);
 
 
 	//몬스터 주소 얻어오기
-	Monster* GetMonster();
-	void SetBattleMgr(BattleManager* bttmgr);
+	TSharedPtr<Monster> GetMonster();
+	void SetBattleMgr(TSharedPtr<BattleManager>  bttmgr);
 
 public:
 	GameManger();
@@ -48,11 +49,11 @@ public:
 
 private:
 	//플레이어 관리
-	Character* mMyCharPtr = nullptr;
+	TSharedPtr<Character> mMyCharPtr = nullptr;
 	//몬스터 벡터로 관리?
 	//std::vector<int> mMonsterVec;
-	Monster* mMonster = nullptr;
-	BattleManager* battleMgr = nullptr;
+	TSharedPtr<Monster> mMonster = nullptr;
+	TSharedPtr<BattleManager>battleMgr = nullptr;
 };
 
 

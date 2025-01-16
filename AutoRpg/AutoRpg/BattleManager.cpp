@@ -18,15 +18,15 @@ BattleManager::BattleManager()
     QueryPerformanceFrequency(&frequency); // 한번만 읽어들이면 된다.
     QueryPerformanceCounter(&prevFrame); // 이전틱 기억
 
-    mShop = new Shop;
-    mInventory = new Inventory;
+    mShop = make_shared<Shop>();//new Shop;
+    mInventory = make_shared<Inventory>();//new Inventory;
 }
 
 BattleManager::~BattleManager()
 {
 }
 
-BTTRESULT BattleManager::Update( Character* player)
+BTTRESULT BattleManager::Update(TSharedPtr<Character>  player)
 {
     mPlayer = player;
     Timer();
@@ -210,7 +210,7 @@ void BattleManager::Close()
     }
 }
 
-void BattleManager::ReadyBattle(Monster* monster )
+void BattleManager::ReadyBattle(Monster monster )
 {
     //SAFE_DELETE(mMonster);
     mMonster = monster;
@@ -351,6 +351,7 @@ void BattleManager::PlayerWin()
             mBattleTime += GetDeltaTime();
             if (0.5f > mBattleTime)
                 return;
+            //100에서 바꿔야함#
             int Exp = 100;//50;//RandRange(10, 100);
             bool IsLevelUp = mPlayer->SetExperience(Exp);
             if(!IsLevelUp)

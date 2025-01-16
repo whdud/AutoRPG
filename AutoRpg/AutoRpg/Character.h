@@ -7,7 +7,9 @@
 using namespace std;
 
 /*std::enable_shared_from_this*/
-class Character {
+class Character 
+    : public std::enable_shared_from_this<Character>
+{
 private:
     string mName; // 캐릭터 이름
     int mLevel;   // 캐릭터 레벨
@@ -47,6 +49,6 @@ public:
     bool IsHealthPotion() const;
     bool IsAttackBoost() const;
 
-    Inventory& GetInventory();
+    TSharedRef<Inventory> GetInventory();
 
 };

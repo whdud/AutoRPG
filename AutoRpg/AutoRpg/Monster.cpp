@@ -1,4 +1,5 @@
 ﻿#include "Monster.h"
+#include "defines.h"
 #include <iostream>
 
 using namespace std;

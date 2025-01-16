@@ -17,7 +17,7 @@ public:
 	HealthPotion(int price, int healthrestore);
 
 	// Character hp restore
-	void Use(Character& character) override;
+	virtual void Use(TSharedRef<Character>  character) override;
 
 };
 
