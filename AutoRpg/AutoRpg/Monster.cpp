@@ -12,5 +12,5 @@ Monster::Monster(int level)
 string Monster::GetName() const { return mName; }
 int Monster::GetMonsterHp() const { return mMonsterHp; }
 int Monster::GetAttack() const { return mAttack; }
-void Monster::TakeDamage(int damage) { mMonsterHp -= damage; }
+void Monster::TakeDamage(int damage) { mMonsterHp = mMonsterHp - damage < 0 ? 0 : mMonsterHp - damage; }
 

@@ -5,7 +5,10 @@ class Plumpkin : public Monster {
 public:
     explicit Plumpkin(int level);
 public:
-    virtual string Monster::GetAsciiArt() const override { return mAsciiArt; }
+    virtual string Monster::GetAsciiArt()  override;
+  
+ 
 private:
-    string mAsciiArt; // ASCII ¾ÆÆ® ¹®ÀÚ¿­
+    int FrameIdx = 0;
+    string mAsciiArt[3]; // ASCII ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ú¿ï¿½
 };

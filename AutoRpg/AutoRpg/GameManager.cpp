@@ -77,16 +77,20 @@ void GameManger::SetBattleMgr(BattleManager* bttmgr)
 }
 
 
-void GameManger::Battle(Character* player)
+int GameManger::Battle(Character* player)
 {
 	//배틀로직 
 	//턴제로 매니저에서 싸움
-	
-	battleMgr->Update(player, mMonster);
+	return battleMgr->Update(player);
 
 	//상점으로 갈래? 
 	//스킵
 
+}
+
+void GameManger::StartBattle()
+{
+	battleMgr->ReadyBattle(mMonster);
 }
 
 void GameManger::DisplayInventory(Character* player)

@@ -29,4 +29,10 @@ Jackpatch::Jackpatch(int level)
           ▒▒▒▒▒▒▒▒▒▒      ▒▒▒▒▒▒▒▒▒     
                                                  )") 
 {
+    mName = "Jackpatch";
+}
+
+string Jackpatch::GetAsciiArt()
+{
+     return mAsciiArt;
 }

@@ -29,5 +29,5 @@ Buckpip::Buckpip(int level)
                     ░░▒▒    ░░░▓                   
             )")
 {
-
+    mName = "Buckpip";
 }

@@ -29,8 +29,8 @@ public:
 
 
 	//배틀관리
-	void Battle(Character* player);
-
+	int Battle(Character* player);
+	void StartBattle();
 	//인벤토리display
 	void DisplayInventory(Character* player);
 

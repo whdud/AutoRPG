@@ -35,8 +35,8 @@ enum CLOSESTATE
 enum BTTRESULT
 {
 	rEMPTY,
-	rWIN,
-	rFAIL
+	rFAIL,
+	rWIN
 };
 class BattleManager
 {
@@ -44,8 +44,8 @@ public:
 	BattleManager();
 	~BattleManager();
 public:
-	void Update(Character* player, Monster* monster);
-	void ReadyBattle();
+	BTTRESULT Update(Character* player);
+	void ReadyBattle(Monster* monster);
 
 	//게임중에 아이템 먹기.
 	void UseItem(int item);

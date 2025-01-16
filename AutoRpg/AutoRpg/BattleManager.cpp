@@ -6,6 +6,7 @@
 #include "HealthPotion.h"
 #include "Shop.h"
 #include "Inventory.h"
+#include "defines.h"
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
@@ -25,15 +26,14 @@ BattleManager::~BattleManager()
 {
 }
 
-void BattleManager::Update( Character* player, Monster* monster)
+BTTRESULT BattleManager::Update( Character* player)
 {
     mPlayer = player;
-    mMonster = monster;
     Timer();
     //cout << "\033[H";
     switch (mGameState) {
         case BTTSTATE::EMPTY:
-            ReadyBattle();
+            //ReadyBattle();
             break;
         case BTTSTATE::READY:
             Ready();
@@ -65,9 +65,9 @@ void BattleManager::Update( Character* player, Monster* monster)
         if ( BTTSTATE::PLAYER == mGameState ) 
         {
             if (input == '1')
-                UseItem(0); //Test
+                UseItem(0); 
             else if (input == '2')
-                UseItem(1); //Test
+                UseItem(1); 
         }
         else if (BTTSTATE::CLOSE == mGameState )
         {
@@ -76,38 +76,30 @@ void BattleManager::Update( Character* player, Monster* monster)
                 if (input == 'a')//
                 {
                     mPlayer->ResetCharacter();
-                    SetState(BTTSTATE::READY);
+                    SetState(BTTSTATE::EMPTY);
                 }
                 else if (input == 'q')
-                {
                     exit(0);
-                }
             }
             else// CLOSESTATE::WIN  // Store:A /Mob hunting:S / Status:D 
             {  
                 if (input == 'a')//
-                {
                     SetState(BTTSTATE::STORE);
-                }
                 else if (input == 's')
-                {
-                    SetState(BTTSTATE::READY);
-                }
+                    SetState(BTTSTATE::EMPTY);
                 else if (input == 'd')
-                {
                     SetState(BTTSTATE::STATUS);
-                }
             }
         }
         else if (BTTSTATE::STORE)
         {
             if (input == 'q')//
-            {
                 SetState(BTTSTATE::CLOSE);
-            }
         }
-
     }
+    if (mGameState == BTTSTATE::EMPTY) // Start Delay or Next Game
+        return mEBTTReult;
+    return BTTRESULT::rEMPTY;
 }
 
 void BattleManager::SetState(BTTSTATE st)
@@ -130,11 +122,13 @@ void BattleManager::Ready()
     switch (mSubState)
     {
         case 0:
+            if (mMonster == nullptr)
+                return;
+
             mBattleTime += GetDeltaTime();
             if (1.f < mBattleTime)
             {
-               
-                mMonsterHp = 10;//temp
+                //mMonster->GetMonsterHp() = 10;//temp
                 CleanScreen();
                 InputMsg("  ");
                 InputMsg("  ");
@@ -190,9 +184,10 @@ void BattleManager::Close()
     }
 }
 
-void BattleManager::ReadyBattle()
+void BattleManager::ReadyBattle(Monster* monster )
 {
-    mMonsterHp = 10;
+    //SAFE_DELETE(mMonster);
+    mMonster = monster;
     SetState(BTTSTATE::READY);
 }
  
@@ -239,8 +234,7 @@ void BattleManager::PlayerTurn()
                 OutputMsg("     플레이어 공격!, 몬스터 방어 성공!");
             else
             {
-                mMonsterHp = mMonsterHp - randAttack;
-                mMonsterHp = mMonsterHp < 0 ? 0 : mMonsterHp;
+                mMonster->TakeDamage(randAttack);
                 OutputMsg("     플레이어 공격!, 몬스터 " + to_string(randAttack) + "의 데미지를 입다.");
             }
             SetSubState(mSubState + 1);
@@ -259,7 +253,7 @@ void BattleManager::MonsterTurn()
     {
         case 0:
         {
-            if (0 == mMonsterHp )
+            if (0 == mMonster->GetMonsterHp() )
             {
                 SetState(BTTSTATE::WIN);
                 return;
@@ -312,7 +306,6 @@ void BattleManager::PlayerWin()
                 int item = DropItem();
                 string str = 1 == item ? "HealthPotion" : "attackBoost";
                 OutputMsg("          ====== "+ str +" 획득!====== ");
-                //inventory setItem ( item );
             }
             SetSubState(mSubState + 1);
         }break;
@@ -490,17 +483,17 @@ void BattleManager::OutputMsg( string str, bool isNewPage )
 
     
     cout << "                                                    " << endl;
-    cout << "====================================================" << endl;
-    if (BTTSTATE::PLAYER >= mGameState)
+    cout << "========================================================" << endl;
+    if (mMonster)//BTTSTATE::PLAYER >= mGameState
     {
-        cout << "NAME:" << mPlayer->GetName() << " HP:" << mPlayer->GetMaxHp() << '/' << mPlayer->GetHp() <<
-            " GOLD:" << mPlayer->GetGold() << " || Monster1:" << " HP:" << 10 << '/' << mMonsterHp << endl;
+        cout << " NAME:" << mPlayer->GetName() << " HP:" << mPlayer->GetMaxHp() << '/' << mPlayer->GetHp() <<
+            " GOLD:" << mPlayer->GetGold() << " Lv:" << mPlayer->GetLevel()<<" || "<< mMonster->GetName() << " HP:" << mMonster->GetMonsterHp() << endl;
     }
     else
     {
         cout << "Name:" << mPlayer->GetName() << " HP:" << mPlayer->GetMaxHp() << '/' << mPlayer->GetHp() << " Gold:" << mPlayer->GetGold() << endl;
     }
-    cout << "====================================================" << endl;
+    cout << "========================================================" << endl;
 }
 
 void BattleManager::InputMsg(string str)
@@ -532,17 +525,10 @@ int BattleManager::DropItem()
 
     shared_ptr<Item> DroppedItem;
     if (ItemType == 1)
-    {
-
         DroppedItem = make_shared<HealthPotion>(10, 50);
 
-    }
     else if (ItemType == 2)
-    {
-
         DroppedItem = make_shared<AttackBoost>(20, 10);
-
-    }
 
     mPlayer->AddItem(DroppedItem);
 

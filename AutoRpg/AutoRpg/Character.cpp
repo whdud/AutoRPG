@@ -40,7 +40,8 @@ int Character::GetMaxHp() const
 
 void Character::SetExperience(int exp)
 {
-    mExperience = exp;
+    mExperience += exp;
+    LevelUp();
 }
 
 bool Character::IsAttackBoost() const

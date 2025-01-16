@@ -29,21 +29,31 @@ int main(void)
 	BattleManager* bttMgr = new BattleManager();
 
 	GameManger::GetInstance()->SetBattleMgr(bttMgr);
-	
+
+	int GameLevel = 1;
+	int GameResult = 0;
 	while (true)
 	{
 		//몬스터 레벨입력후 랜덤 1마리 생성
-		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(5));
+		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(GameLevel));
+		GET_SINGLE(GameManger)->StartBattle();
 
-		while (true) {
-
-			GET_SINGLE(GameManger)->Battle(player);
+		while (BTTRESULT::rEMPTY == GameResult) {
+			GameResult = GET_SINGLE(GameManger)->Battle(player);
 		}
+
+		GameLevel = BTTRESULT::rWIN == GameResult ? GameLevel + 1 : GameLevel;
+		GameResult = BTTRESULT::rEMPTY;
+		if (10 < GameLevel)
+		{
+
+			cout << "Game Clear!"<< endl;
+			break;
+		}
+
 		//만든 몬스터와 바로 배틀 ㄱㄱ 안에서 이겼으면 상점스킵 or 상점방문  
 		
 		//상점 가는 코드
-
-		// 
 
 		//도전과제 10레벨 찍고 보스몬스터 나옴-> 클리어하면  while문 탈출
 	}

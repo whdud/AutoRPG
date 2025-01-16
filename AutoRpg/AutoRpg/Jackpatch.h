@@ -6,9 +6,9 @@ public:
     explicit Jackpatch(int level);
 
 public:
-    virtual string Monster::GetAsciiArt() const override{ return mAsciiArt; }
+    virtual string GetAsciiArt() override;
 
 private:
-    string mAsciiArt; // ASCII ¾ÆÆ® ¹®ÀÚ¿­
+    string mAsciiArt; // ASCII ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ú¿ï¿½
 
 };
