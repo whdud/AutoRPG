@@ -17,10 +17,16 @@ void Inventory::UseItem(int index, Character& character) {
     }
 }
 
+void Inventory::RemoveItem(int index) {
+
+    mItems.erase(mItems.begin() + index);
+
+}
+
 void Inventory::DisplayInventory() const {
     cout << "인벤토리:\n";
     for (size_t i = 0; i < mItems.size(); ++i) {
-        cout << i + 1 << ". " << mItems[i]->GetName() << " (가격: " << mItems[i]->GetPrice() << ")\n";
+        cout << i + 1 << ". " << mItems[i]->GetName() << " (가격: " << mItems[i]->GetPrice() * 0.6<< ")\n";
     }
     if (mItems.empty()) {
         cout << "(비어 있음)\n";
@@ -46,4 +52,10 @@ bool Inventory::IsAttackBoost() const {
         }
     }
     return false;
+}
+
+const vector<shared_ptr<Item>>& Inventory::GetItems() const {
+
+    return mItems;
+
 }

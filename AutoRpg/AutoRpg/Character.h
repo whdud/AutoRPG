@@ -36,6 +36,7 @@ public:
     void IncreaseAttack(int amount);
     int GetGold() const;
     void ReduceGold(int amount);
+    void AddGold(int amount);
     int GetAttack() const;
     int GetHp() const;
     void SetHp(int hp);
@@ -44,4 +45,7 @@ public:
     void SetExperience(int exp);
     bool IsHealthPotion() const;
     bool IsAttackBoost() const;
+
+    Inventory& GetInventory();
+
 };

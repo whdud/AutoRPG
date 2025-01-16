@@ -11,6 +11,7 @@ using namespace std;
 class Character;
 class Monster;
 class Shop;
+class Inventory;
 
 enum BTTSTATE
 {
@@ -93,6 +94,8 @@ private:
 	Character*  mPlayer;
 	Monster*	mMonster;
 	Shop*		mShop;
+	Inventory*	mInventory;
+
 	int mMonsterHp = 10;
 
 };

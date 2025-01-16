@@ -84,6 +84,12 @@ void Character::ReduceGold(int amount) {
 
 }
 
+void Character::AddGold(int amount) {
+
+    mGold += amount;
+
+}
+
 int Character::GetGold() const {
 
     return mGold;
@@ -118,4 +124,10 @@ void Character::ResetCharacter() {
     mGold = 0;
     mInventory.ClearInventory();
     cout << "캐릭터가 초기화되었습니다.\n";
+}
+
+Inventory& Character::GetInventory() {
+
+    return mInventory;
+
 }

@@ -17,8 +17,11 @@ private:
 public:
     void AddItem(shared_ptr<Item> item);
     void UseItem(int index, Character& character);
+    void RemoveItem(int index);
     void DisplayInventory() const;
     void ClearInventory();
     bool IsHealthPotion() const;
     bool IsAttackBoost() const;
+    const vector<shared_ptr<Item>>& GetItems() const;
+
 };

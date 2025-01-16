@@ -5,6 +5,7 @@
 #include "AttackBoost.h"
 #include "HealthPotion.h"
 #include "Shop.h"
+#include "Inventory.h"
 #include <math.h>
 #include <cstdlib>
 #include <ctime>
@@ -17,7 +18,7 @@ BattleManager::BattleManager()
     QueryPerformanceCounter(&prevFrame); // 이전틱 기억
 
     mShop = new Shop;
-
+    mInventory = new Inventory;
 }
 
 BattleManager::~BattleManager()
@@ -386,10 +387,28 @@ void BattleManager::Store()
     }break;
     case 1:
     {
-        int a;
-        mShop->DisplayItems();
-        cin >> a;
-        mShop->BuyItem(a-1, *mPlayer);
+        int selectstore;
+
+        cout << "you arrived the shop, 1 is buyitem, 2 is sellitem" << endl;
+        cin >> selectstore;
+
+        if (selectstore == 1)
+        {
+            int a;
+            mShop->DisplayItems();
+            cin >> a;
+            mShop->BuyItem(a - 1, *mPlayer);
+
+        }
+        else if (selectstore == 2)
+        {
+            cout << "sell the item" << endl;
+            int b;
+            mPlayer->GetInventory();
+            cin >> b;
+            mShop->SellItems(b - 1, *mPlayer);
+
+        }
         //int HealthPotion = 5;//Load Shop!
         //int attackBoost = 5;//Load Shop!
         //CleanScreen();
