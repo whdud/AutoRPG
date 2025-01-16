@@ -30,6 +30,7 @@ enum CLOSESTATE
 	cRESULT,
 	cDIE,
 	cWIN,
+	cBOSS_WIN,
 	cDELAY
 };
 enum BTTRESULT
@@ -72,6 +73,7 @@ private:
 	int RandRange(int min , int max);
 	void CleanScreen();
 	int DropItem();
+	void KeyButton();
 	
 public:
 	LARGE_INTEGER frequency ;
@@ -99,4 +101,5 @@ private:
 	int mMonsterHp = 10;
 
 };
+
 

@@ -38,10 +38,10 @@ int Character::GetMaxHp() const
     return mMaxHp;
 }
 
-void Character::SetExperience(int exp)
+bool Character::SetExperience(int exp)
 {
     mExperience += exp;
-    LevelUp();
+   return  LevelUp();
 }
 
 bool Character::IsAttackBoost() const
@@ -54,15 +54,17 @@ bool Character::IsHealthPotion() const
     return mInventory.IsHealthPotion();
 }
 
-void Character::LevelUp() {
+bool Character::LevelUp() {
+    bool isLevelUp = false;
     if (mExperience >= 100 && mLevel < 10) {
         mExperience -= 100;
         mLevel++;
         mMaxHp += mLevel * 20;
         mHp = mMaxHp;
         mAttack += mLevel * 5;
-        cout << "레벨업! 현재 레벨: " << mLevel << "\n";
+        isLevelUp = true;
     }
+    return isLevelUp;
 }
 
 void Character::IncreaseHealth(int amount) {

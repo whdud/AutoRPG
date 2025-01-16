@@ -27,7 +27,7 @@ public:
     int GetLevel() const;
     void SetLevel(int level);
     void SetAttack(int attack);
-    void LevelUp();
+    bool LevelUp();
     void AddItem(shared_ptr<Item> item);
     void UseItem(int index);
     void DisplayStatus() const;
@@ -43,7 +43,7 @@ public:
     void SetHp(int hp);
     void SetGold(int gold);
     int GetMaxHp() const;
-    void SetExperience(int exp);
+    bool SetExperience(int exp);
     bool IsHealthPotion() const;
     bool IsAttackBoost() const;
 

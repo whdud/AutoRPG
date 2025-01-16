@@ -60,18 +60,27 @@ BTTRESULT BattleManager::Update( Character* player)
             Close();
             break;
     }
+
+    KeyButton();
+
+    if (mGameState == BTTSTATE::EMPTY) // Start Delay or Next Game
+        return mEBTTReult;
+    return BTTRESULT::rEMPTY;
+}
+void BattleManager::KeyButton()
+{
     if (_kbhit()) {
         char input = _getch();
-        if ( BTTSTATE::PLAYER == mGameState ) 
+        if (BTTSTATE::PLAYER == mGameState)
         {
             if (input == '1')
-                UseItem(0); 
+                UseItem(0);
             else if (input == '2')
-                UseItem(1); 
+                UseItem(1);
         }
-        else if (BTTSTATE::CLOSE == mGameState )
+        else if (BTTSTATE::CLOSE == mGameState)
         {
-            if (  CLOSESTATE::cDIE == mSubState)//ReStartGame:A / OutGame:Q 
+            if (CLOSESTATE::cDIE == mSubState)//ReStartGame:A / OutGame:Q 
             {
                 if (input == 'a')//
                 {
@@ -82,7 +91,7 @@ BTTRESULT BattleManager::Update( Character* player)
                     exit(0);
             }
             else// CLOSESTATE::WIN  // Store:A /Mob hunting:S / Status:D 
-            {  
+            {
                 if (input == 'a')//
                     SetState(BTTSTATE::STORE);
                 else if (input == 's')
@@ -97,11 +106,7 @@ BTTRESULT BattleManager::Update( Character* player)
                 SetState(BTTSTATE::CLOSE);
         }
     }
-    if (mGameState == BTTSTATE::EMPTY) // Start Delay or Next Game
-        return mEBTTReult;
-    return BTTRESULT::rEMPTY;
 }
-
 void BattleManager::SetState(BTTSTATE st)
 {
     mPrvGameState = mGameState;
@@ -142,6 +147,12 @@ void BattleManager::Ready()
             if (1.f < mBattleTime)
             {
                 CleanScreen();
+                if (mMonster->GetName() == "Boss")
+                {
+                    InputMsg ("              ========================= ");
+                    InputMsg("    ========== BOSS가 등장 하였습니다! ==========");
+                    OutputMsg("              =========================");
+                }
                 BTTSTATE St = BTTSTATE( RandRange(2,2) );
                 SetState(St);
             }
@@ -157,7 +168,7 @@ void BattleManager::Close()
     switch (mSubState)
     {
     case CLOSESTATE::cRESULT:
-     
+            
             if ( BTTRESULT::rFAIL == mEBTTReult)
             {
                 InputMsg(" ");
@@ -170,16 +181,31 @@ void BattleManager::Close()
                 if (BTTSTATE::STORE == mPrvGameState || BTTSTATE::STATUS == mPrvGameState)
                     CleanScreen();
 
-                InputMsg(" ");
-                InputMsg(" ");
-                InputMsg("            ======  전투 종료  ======");
-                InputMsg(" ");
-                OutputMsg("  상점: A  / 몬스터 사냥: S  / 스테이터스 확인: D");
-                SetSubState(CLOSESTATE::cWIN);
+                if ("Boss" == mMonster->GetName()) 
+                {
+                    InputMsg(" ");
+                    InputMsg(" ");
+                    InputMsg("            ======  전투 종료  ======");
+                    InputMsg(" ");
+                    InputMsg("        축하합니다! 게임 엔딩을 보셨습니다!");
+                    OutputMsg("                    게임 종료");
+                    SetSubState(CLOSESTATE::cBOSS_WIN);
+                }
+                else {
+                    InputMsg(" ");
+                    InputMsg(" ");
+                    InputMsg("            ======  전투 종료  ======");
+                    InputMsg(" ");
+                    OutputMsg("  상점: A  / 몬스터 사냥: S  / 스테이터스 확인: D");
+                    SetSubState(CLOSESTATE::cWIN);
+                }
             }
             break;
     case CLOSESTATE::cDIE:break;//Player die / delay Select Game
     case CLOSESTATE::cWIN: break;
+    case CLOSESTATE::cBOSS_WIN:
+        exit(0);
+        break;
     case CLOSESTATE::cDELAY: break;
     }
 }
@@ -229,7 +255,7 @@ void BattleManager::PlayerTurn()
                 return;
             }
             
-            int randAttack = mPlayer->GetAttack()+ RandRange(-4, 4);
+            int randAttack = mPlayer->GetAttack()+ RandRange(0, 5);
             if (randAttack == 0)
                 OutputMsg("     플레이어 공격!, 몬스터 방어 성공!");
             else
@@ -292,7 +318,7 @@ void BattleManager::PlayerWin()
             CleanScreen();
             InputMsg(" ");
             InputMsg(" ");
-            OutputMsg("           ====== 플레이어 승리! ======" );
+            OutputMsg("            ====== 플레이어 승리!! ======" );
             SetSubState(mSubState + 1);
         }break;
         case 1:
@@ -314,9 +340,9 @@ void BattleManager::PlayerWin()
             mBattleTime += GetDeltaTime();
             if (0.5f > mBattleTime)
                 return;
-            int Gold = mPlayer->GetGold()+10;
+            int Gold = mPlayer->GetGold()+ RandRange(1,2)*10;
             mPlayer->SetGold(Gold);
-            OutputMsg("           ======  GOLD/" + to_string(Gold) + " 획득!  ====== ");
+            OutputMsg("           ======  GOLD /" + to_string(Gold) + " 획득!  ====== ");
             SetSubState(mSubState + 1);
         }break;
         case 3:
@@ -325,8 +351,14 @@ void BattleManager::PlayerWin()
             if (0.5f > mBattleTime)
                 return;
             int Exp = 50;//RandRange(10, 100);
-            mPlayer->SetExperience(Exp);
-            OutputMsg("           ====== 경험치/" + to_string(Exp) + " 획득! ====== ");
+            bool IsLevelUp = mPlayer->SetExperience(Exp);
+            if(!IsLevelUp)
+                OutputMsg("           ====== 경험치/" + to_string(Exp) + " 획득! ====== ");
+            else {
+                int level = mPlayer->GetLevel();
+                InputMsg("           ====== 경험치/" + to_string(Exp) + " 획득! ====== ");
+                OutputMsg("        ====== Level Up!! 현재 레벨:" + to_string(level)+" ====== ");
+            }
 
             SetSubState(mSubState + 1);
         }break;
@@ -481,8 +513,8 @@ void BattleManager::OutputMsg( string str, bool isNewPage )
     for (int i = 0; i < lineAdd;++i)
         cout << "\n";
 
-    
-    cout << "                                                    " << endl;
+    cout << "                                                        " << endl;
+    cout << "========= 아이템 사용 버튼 HealPotion:1/AttackBoost:2 ==" << endl;
     cout << "========================================================" << endl;
     if (mMonster)//BTTSTATE::PLAYER >= mGameState
     {

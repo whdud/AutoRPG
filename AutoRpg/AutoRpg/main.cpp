@@ -22,25 +22,7 @@ int main(void)
 {
 	system("color 0A");
 	//스마트포인터 이용?
-	std::string playerName;
-	while (true)
-	{
-	
-		cout << "이름을 입력하세요....\n";
-		std::getline(std::cin, playerName); // 공백 포함한 문자열 입력받기
-		if (std::any_of(playerName.begin(), playerName.end(), isspace))
-		{
-			cout << "공백이 존재합니다. 다시입력하세요..\n";
-			continue;
-		}
-		else
-			break;
-	}
-
-
-		
-
-	Character* player = new Character(playerName);
+	Character* player = new Character("Player");
 
 	GameManger::GetInstance()->SetPlayer(player);
 	
@@ -62,12 +44,6 @@ int main(void)
 
 		GameLevel = BTTRESULT::rWIN == GameResult ? GameLevel + 1 : GameLevel;
 		GameResult = BTTRESULT::rEMPTY;
-		if (10 < GameLevel)
-		{
-
-			cout << "Game Clear!"<< endl;
-			break;
-		}
 
 		//만든 몬스터와 바로 배틀 ㄱㄱ 안에서 이겼으면 상점스킵 or 상점방문  
 		
