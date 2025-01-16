@@ -2,15 +2,15 @@
 
 #define GET_SINGLE(classname) classname::GetInstance()
 
-// TSharedPtr ���ø� ����
+// TSharedPtr 이걸로 쉐어드포인터사용 ㄱㄱ
 template <typename T>
 using TSharedPtr = std::shared_ptr<T>;
 
-// TSharedRef ���ø� ���� (TSharedPtr�� �����ϰ� ����)
+// TSharedRef
 template <typename T>
 using TSharedRef = TSharedPtr<T>;
 
-// TWeakPtr ���ø� ����
+// TWeakPtr
 template <typename T>
 using TWeakPtr = std::weak_ptr<T>;
 
