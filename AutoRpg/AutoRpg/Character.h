@@ -6,6 +6,7 @@
 
 using namespace std;
 
+/*std::enable_shared_from_this*/
 class Character {
 private:
     string mName; // 캐릭터 이름

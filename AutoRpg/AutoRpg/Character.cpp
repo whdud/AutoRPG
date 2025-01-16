@@ -102,7 +102,7 @@ void Character::AddItem(shared_ptr<Item> item) {
 }
 
 void Character::UseItem(int index) {
-    mInventory.UseItem(index, *this);
+    mInventory.UseItem(index, *this/*std::enable_shared_from_this필요*/);
 }
 
 void Character::DisplayStatus() const {
