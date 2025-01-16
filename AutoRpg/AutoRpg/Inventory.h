@@ -24,4 +24,4 @@ public:
     bool IsAttackBoost() const;
     const vector<shared_ptr<Item>>& GetItems() const;
 
-};
+}; 
