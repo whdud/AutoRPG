@@ -22,7 +22,25 @@ int main(void)
 {
 	system("color 0A");
 	//스마트포인터 이용?
-	Character* player = new Character("Player");
+	std::string playerName;
+	while (true)
+	{
+	
+		cout << "이름을 입력하세요....\n";
+		std::getline(std::cin, playerName); // 공백 포함한 문자열 입력받기
+		if (std::any_of(playerName.begin(), playerName.end(), isspace))
+		{
+			cout << "공백이 존재합니다. 다시입력하세요..\n";
+			continue;
+		}
+		else
+			break;
+	}
+
+
+		
+
+	Character* player = new Character(playerName);
 
 	GameManger::GetInstance()->SetPlayer(player);
 	
