@@ -23,6 +23,9 @@ public:
     string GetName() const;
     int GetMonsterHp() const;
     int GetAttack() const;
+
+    void SetBossMonster();
+
     void TakeDamage(int damage);
     virtual string GetAsciiArt()  =0; // ASCII 아트 반환
     virtual ~Monster() {}

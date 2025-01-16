@@ -22,7 +22,23 @@ int main(void)
 {
 	system("color 0A");
 	//스마트포인터 이용?
-	Character* player = new Character("Player");
+	
+
+	std::string playerName;
+	while (true)
+	{
+
+		cout << "이름을 입력하세요....\n";
+		std::getline(std::cin, playerName); // 공백 포함한 문자열 입력받기
+		if (std::any_of(playerName.begin(), playerName.end(), isspace))
+		{
+			cout << "공백이 존재합니다. 다시입력하세요..\n";
+			continue;
+		}
+		else
+			break;
+	}
+	Character* player = new Character(playerName);
 
 	GameManger::GetInstance()->SetPlayer(player);
 	
@@ -36,6 +52,12 @@ int main(void)
 	{
 		//몬스터 레벨입력후 랜덤 1마리 생성
 		GET_SINGLE(GameManger)->SetMonster(GET_SINGLE(GameManger)->GenerateMonster(GameLevel));
+		if (player->GetLevel() >= 10)
+		{
+			//몬스터얻어와서 보스로 바꿔주고 이름도 "Boss" 배틀안에서 Boss 확인됨  
+			GET_SINGLE(GameManger)->GetMonster()->SetBossMonster();
+			
+		}
 		GET_SINGLE(GameManger)->StartBattle();
 
 		while (BTTRESULT::rEMPTY == GameResult) {

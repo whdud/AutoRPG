@@ -66,9 +66,11 @@ void GameManger::SetMonster(Monster* monster)
 	mMonster = monster;
 }
 
+
+
 Monster* GameManger::GetMonster()
 {
-	return nullptr;
+	return mMonster;
 }
 
 void GameManger::SetBattleMgr(BattleManager* bttmgr)

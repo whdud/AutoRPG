@@ -37,6 +37,7 @@ public:
 	//게임 매니저에 몬스터 넣기
 	void SetMonster(Monster* monster);
 
+
 	//몬스터 주소 얻어오기
 	Monster* GetMonster();
 	void SetBattleMgr(BattleManager* bttmgr);

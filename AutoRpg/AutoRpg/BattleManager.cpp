@@ -256,6 +256,7 @@ void BattleManager::PlayerTurn()
             }
             
             int randAttack = mPlayer->GetAttack()+ RandRange(0, 5);
+           
             if (randAttack == 0)
                 OutputMsg("     플레이어 공격!, 몬스터 방어 성공!");
             else
@@ -350,7 +351,7 @@ void BattleManager::PlayerWin()
             mBattleTime += GetDeltaTime();
             if (0.5f > mBattleTime)
                 return;
-            int Exp = 50;//RandRange(10, 100);
+            int Exp = 100;//50;//RandRange(10, 100);
             bool IsLevelUp = mPlayer->SetExperience(Exp);
             if(!IsLevelUp)
                 OutputMsg("           ====== 경험치/" + to_string(Exp) + " 획득! ====== ");
