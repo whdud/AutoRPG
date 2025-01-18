@@ -1,49 +1,52 @@
 #pragma once
 #include <string>
+#include <memory>
+#include "Inventory.h"
+#include "Item.h"
+
 using namespace std;
 
+/*std::enable_shared_from_this*/
 class Character {
+private:
+    string mName; // 캐릭터 이름
+    int mLevel;   // 캐릭터 레벨
+    int mMaxHp;   // 최대 체력
+    int mHp;      // 현재 체력
+    int mAttack;  // 공격력
+    int mExperience; // 경험치
+    int mGold;    // 골드
+    Inventory mInventory; // 인벤토리 객체
 
 public:
-    Character();
-	void LevelUp();
-    // 이름 게터와 세터  
-    string getName() const { return mName; }
-    void setName(const string& name) { mName = name; }
+    explicit Character(const string& charName);
 
-    // 레벨 게터와 세터
-    int getLevel() const { return mLevel; }
-    void setLevel(int level) { mLevel = level; }
+    string GetName() const;
+    void SetName(const string& name);
 
-    // 최대최력 게터와 세터
-    int getMaxHp() const { return mMaxHp; }
-    void setMaxHp(int maxHp) { mMaxHp = maxHp; }
+    int GetLevel() const;
+    void SetLevel(int level);
+    void SetAttack(int attack);
+    bool LevelUp();
+    void AddItem(shared_ptr<Item> item);
+    void UseItem(int index);
+    void DisplayStatus() const;
+    void ResetCharacter();
 
-    // 체력 게터와 세터
-    int getHp() const { return mHp; }
-    void setHp(int hp) { mHp = hp; }
+    void IncreaseHealth(int amount);
+    void IncreaseAttack(int amount);
+    int GetGold() const;
+    void ReduceGold(int amount);
+    void AddGold(int amount);
+    int GetAttack() const;
+    int GetHp() const;
+    void SetHp(int hp);
+    void SetGold(int gold);
+    int GetMaxHp() const;
+    bool SetExperience(int exp);
+    bool IsHealthPotion() const;
+    bool IsAttackBoost() const;
 
-    // 공격력 게터와 세터
-    int getAttack() const { return mAttack; }
-    void setAttack(int attack) { mAttack = attack; }
+    Inventory& GetInventory();
 
-    // 경험치 게터와 세터
-    int getExperience() const { return mExperience; }
-    void setExperience(int experience) { mExperience = experience; }
-
-    // 골드 게터와 세터
-    int getGold() const { return mGold; }
-    void setGold(int gold) { mGold = gold; }
-protected:
-    void displayStatus();
-	void resetCharacter();
-
-private:
-    string  mName;
-    int     mLevel;
-    int     mMaxHp;
-    int     mHp;
-    int     mAttack;
-    int     mExperience;
-    int     mGold;
 };

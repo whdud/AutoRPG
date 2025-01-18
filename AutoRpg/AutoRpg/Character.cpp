@@ -1,57 +1,136 @@
-#include <iostream>
 #include "Character.h"
-
+#include "Inventory.h"
+#include <iostream>
 using namespace std;
 
-Character::Character()
-			:mName("Player"),
-			 mLevel(1),
-			 mMaxHp(10),
-			 mHp(mMaxHp),
-			 mAttack(2),
-			 mExperience(0),
-			 mGold(0)
-{
-	/*mName = "Player";
-	mLevel = 1;
-	mMaxHp = 10;
-	mHp = mMaxHp;
-	mAttack = 2;
-	mExperience = 0;
-	mGold = 0;*/
+Character::Character(const string& charName)
+    : mName(charName), mLevel(6), mMaxHp(100), mHp(100), mAttack(10), mExperience(0), mGold(0) {
 }
 
-void Character::displayStatus()
+string Character::GetName() const { return mName; }
+void Character::SetName(const string& name) { mName = name; }
+
+int Character::GetLevel() const { return mLevel; }
+void Character::SetLevel(int level) { mLevel = level; }
+void Character::SetAttack(int attack)
 {
-    cout << "\n--- " << mName << "'s Status ---\n";
-    cout << "Level: " << mLevel << "\nHP: " << mHp << "/" 
-		<< mMaxHp << "\nAttack: " << mAttack << "\nGold: "
-		<< mGold << "\nExperience: " << mExperience << "\n";
+    mAttack = attack;
+}
+int Character::GetAttack() const { return mAttack; }
+
+int Character::GetHp() const
+{
+    return mHp;
 }
 
-void Character::LevelUp()//레벨업 함수
+void Character::SetHp(int hp)
 {
-    if (mLevel < 10) 
-    {
-        mLevel++; // 레벨 증가
-        mMaxHp += mLevel * 20; // 레벨에 따라 최대 체력 증가
-        mHp = mMaxHp; // 최대 체력으로 회복
-        mAttack += mLevel * 5; // 공격력 증가
-        cout << "레벨업! " << mLevel << "\n";
+    mHp = hp;
+}
+
+void Character::SetGold(int gold)
+{
+    mGold = gold;
+}
+
+int Character::GetMaxHp() const
+{
+    return mMaxHp;
+}
+
+bool Character::SetExperience(int exp)
+{
+    mExperience += exp;
+   return  LevelUp();
+}
+
+bool Character::IsAttackBoost() const
+{
+    return mInventory.IsAttackBoost();
+}
+
+bool Character::IsHealthPotion() const
+{
+    return mInventory.IsHealthPotion();
+}
+
+bool Character::LevelUp() {
+    bool isLevelUp = false;
+    if (mExperience >= 100 && mLevel < 10) {
+        mExperience -= 100;
+        mLevel++;
+        mMaxHp += mLevel * 20;
+        mHp = mMaxHp;
+        mAttack += mLevel * 5;
+        isLevelUp = true;
     }
-    else
-    {
-        cout << "만렙입니다!!\n";
-    }
+    return isLevelUp;
 }
 
-void Character::resetCharacter()//캐릭터 초기화(죽었을 떄)
-{
-	mName = "Player";
-	mLevel = 1;
-	mMaxHp = 10;
-	mHp = mMaxHp;
-	mAttack = 2;
-	mExperience = 0;
-	mGold = 0;
+void Character::IncreaseHealth(int amount) {
+
+    mHp = min(mHp + amount, mMaxHp);
+    cout << "Health increased " << amount << ". Current Health: " << mHp << endl;
+
+}
+
+void Character::IncreaseAttack(int amount) {
+
+    mAttack += amount;
+    cout << "Attack increased " << amount << ". Current AttackDamage: " << mAttack << endl;
+
+}
+
+void Character::ReduceGold(int amount) {
+
+    mGold -= amount;
+
+}
+
+void Character::AddGold(int amount) {
+
+    mGold += amount;
+
+}
+
+int Character::GetGold() const {
+
+    return mGold;
+
+}
+
+void Character::AddItem(shared_ptr<Item> item) {
+    mInventory.AddItem(item);
+}
+
+void Character::UseItem(int index) {
+    mInventory.UseItem(index, *this/*std::enable_shared_from_this필요*/);
+}
+
+void Character::DisplayStatus() const {
+    cout << "--- " << mName << " 상태 ---\n";
+    cout << "레벨: " << mLevel << "\n";
+    cout << "체력: " << mHp << "/" << mMaxHp << "\n";
+    cout << "공격력: " << mAttack << "\n";
+    cout << "골드: " << mGold << "\n";
+    cout << "경험치: " << mExperience << "\n";
+    mInventory.DisplayInventory();
+    cout << "-------------------------\n";
+}
+
+void Character::ResetCharacter() {
+    mLevel = 1;
+    mMaxHp = 100;
+    mHp = mMaxHp;
+    mAttack = 10;
+    mExperience = 0;
+    mGold = 0;
+    mInventory.ClearInventory();
+    cout << "캐릭터가 초기화되었습니다.\n";
+}
+
+Inventory& Character::GetInventory() {
+
+    return mInventory;
+
 }

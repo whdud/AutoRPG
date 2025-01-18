@@ -5,20 +5,24 @@
 #include <chrono>
 #include <conio.h> 
 #include <vector>
-
+#include <deque>
 using namespace std;
 
 class Character;
 class Monster;
+class Shop;
+class Inventory;
 
 enum BTTSTATE
 {
-	EMPTY,
+	DELAY,
 	READY,
 	MONSTER,
 	PLAYER,
-	WIN,
 	DIE,
+	WIN,
+	SHOP,
+	STATUS,
 	CLOSE,
 };
 enum CLOSESTATE
@@ -26,17 +30,36 @@ enum CLOSESTATE
 	cRESULT,
 	cDIE,
 	cWIN,
+	cBOSS_WIN,
 	cDELAY
 };
-
+enum BTTRESULT
+{
+	rEXIT = -1,
+	rEMPTY = 0,
+	rFAIL,
+	rWIN
+};
+struct sShake
+{
+	string shakeStr = "";
+	float  shakeTime = 1.f;
+	void Reset()
+	{
+		shakeStr = "";
+		shakeTime = 1.f;
+	}
+};
 class BattleManager
 {
 public:
 	BattleManager();
+	BattleManager(Character* player);
 	~BattleManager();
+
 public:
-	void Update(Character* player, Monster* monster);
-	void ReadyBattle();
+	BTTRESULT Update();
+	void ReadyBattle(Monster* monster);
 
 	//게임중에 아이템 먹기.
 	void UseItem(int item);
@@ -51,12 +74,20 @@ private:
 	void MonsterTurn();
 	void PlayerWin();
 	void PlayerDie();
+	void SHOP();
+	void Status();
 	void Close();
 
 	void SetSubState(int st);
 	void NextGameTurn();
-	void InputMsg(string str = "", bool isNewPage = false);
+	void OutputMsg(  string str = "" , bool isNewPage = false);
+	void InputMsg(string str );
+
 	int RandRange(int min , int max);
+	void CleanScreen();
+	int DropItem();
+	void KeyButton();
+	
 public:
 	LARGE_INTEGER frequency ;
 	LARGE_INTEGER cur  ;
@@ -68,15 +99,19 @@ public:
 	int fpsCounter = 0;
 
 private:
-	vector<Monster*> mMonList;
-	BTTSTATE mCurrentTurn = BTTSTATE::EMPTY;
-	string mTempStr = "";
-	int mState = 0;
+	BTTSTATE mGameState = BTTSTATE::DELAY;
+	BTTSTATE mPrvGameState = BTTSTATE::DELAY;
+	BTTRESULT mEBTTReult = BTTRESULT::rEMPTY;
 	int mSubState = 0;
-	vector<string> mStrArr;
-	string mStr = "";
+
+	deque<string> mStrArr;
+
 	Character*  mPlayer;
 	Monster*	mMonster;
+	Shop*		mShop;
+
 	int mMonsterHp = 10;
+	sShake shake;
 };
+
 

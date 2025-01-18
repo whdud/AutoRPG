@@ -19,20 +19,41 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AttackBoost.cpp" />
     <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="Buckpip.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Chicken.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="HealthPotion.cpp" />
+    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Jackpatch.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
-    <ClCompile Include="troll.cpp" />
+    <ClCompile Include="Plumpkin.cpp" />
+    <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="SoundMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttackBoost.h" />
     <ClInclude Include="BattleManager.h" />
+    <ClInclude Include="Buckpip.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="Chicken.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="HealthPotion.h" />
+    <ClInclude Include="Inventory.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Jackpatch.h" />
     <ClInclude Include="Monster.h" />
-    <ClInclude Include="troll.h" />
+    <ClInclude Include="Plumpkin.h" />
+    <ClInclude Include="Shop.h" />
+    <ClInclude Include="SoundMgr.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -119,7 +140,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
