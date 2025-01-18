@@ -4,7 +4,7 @@
 using namespace std;
 
 Character::Character(const string& charName)
-    : mName(charName), mLevel(6), mMaxHp(100), mHp(100), mAttack(10), mExperience(0), mGold(0) {
+    : mName(charName), mLevel(1), mMaxHp(100), mHp(100), mAttack(10), mExperience(0), mGold(50) {
 }
 
 string Character::GetName() const { return mName; }
@@ -103,8 +103,8 @@ void Character::AddItem(shared_ptr<Item> item) {
     mInventory.AddItem(item);
 }
 
-void Character::UseItem(int index) {
-    mInventory.UseItem(index, *this/*std::enable_shared_from_this필요*/);
+bool Character::UseItem(int index) {
+   return mInventory.UseItem(index, *this/*std::enable_shared_from_this필요*/);
 }
 
 void Character::DisplayStatus() const {

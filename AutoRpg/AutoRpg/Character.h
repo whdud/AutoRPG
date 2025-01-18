@@ -29,7 +29,7 @@ public:
     void SetAttack(int attack);
     bool LevelUp();
     void AddItem(shared_ptr<Item> item);
-    void UseItem(int index);
+    bool UseItem(int index);
     void DisplayStatus() const;
     void ResetCharacter();
 

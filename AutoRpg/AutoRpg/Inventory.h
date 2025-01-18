@@ -16,7 +16,7 @@ private:
 
 public:
     void AddItem(shared_ptr<Item> item);
-    void UseItem(int index, Character& character);
+    bool UseItem(int index, Character& character);
     void RemoveItem(int index);
     void DisplayInventory() const;
     void ClearInventory();

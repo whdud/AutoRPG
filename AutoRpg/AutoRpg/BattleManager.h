@@ -13,6 +13,11 @@ class Monster;
 class Shop;
 class Inventory;
 
+enum ITEM
+{
+	HEALTH_POTION,
+	ATTACK_BOOST
+};
 enum BTTSTATE
 {
 	DELAY,
@@ -53,7 +58,6 @@ struct sShake
 class BattleManager
 {
 public:
-	BattleManager();
 	BattleManager(Character* player);
 	~BattleManager();
 
@@ -62,7 +66,7 @@ public:
 	void ReadyBattle(Monster* monster);
 
 	//게임중에 아이템 먹기.
-	void UseItem(int item);
+	void UseItem(ITEM item);
 
 	void Timer();
 	float GetDeltaTime();

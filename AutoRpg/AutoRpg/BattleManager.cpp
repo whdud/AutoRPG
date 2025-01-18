@@ -14,6 +14,8 @@
 #include <string>
 #include <random>
 #include <deque>
+
+
 enum {
     BLACK,
     DARK_BLUE,
@@ -39,11 +41,7 @@ BattleManager::BattleManager(Character* player) :mPlayer(player)
 
     mShop = new Shop;
 }
-BattleManager::BattleManager()
-{
-    QueryPerformanceFrequency(&frequency); // 한번만 읽어들이면 된다.
-    QueryPerformanceCounter(&prevFrame); // 이전틱 기억
-}
+
 BattleManager::~BattleManager()
 {
     delete mShop;
@@ -97,9 +95,9 @@ void BattleManager::KeyButton()
         if (BTTSTATE::PLAYER == mGameState)
         {
             if (input == '1')
-                UseItem(0);
+                UseItem(ITEM::HEALTH_POTION);
             else if (input == '2')
-                UseItem(1);
+                UseItem(ITEM::ATTACK_BOOST);
         }
         else if (BTTSTATE::CLOSE == mGameState)
         {
@@ -252,32 +250,18 @@ void BattleManager::ReadyBattle(Monster* monster )
     SetState(BTTSTATE::READY);
 }
  
-void BattleManager::UseItem(int item)
+void BattleManager::UseItem(ITEM item)
 {
-    if (0 == item) //inventory
+    bool isItem = false;
+    isItem = mPlayer->UseItem(item);
+    string itemName = item == ITEM::HEALTH_POTION ? "Heal Postion" : "AttackBoots";
+    if (isItem)
     {
-        bool isItem = mPlayer->IsHealthPotion();
-        if (isItem)
-        {
-            mPlayer->UseItem(0);
-            GET_SINGLE(SoundMgr)->PlayEffect(7);
-            OutputMsg("        Use Item Hp +5!!");
-        }
-        else
-            OutputMsg("        Empty Item!!");
+        GET_SINGLE(SoundMgr)->PlayEffect(7);
+        OutputMsg("        Use Item " + itemName );
     }
-    else if (1 == item) //inventory
-    {
-        bool isItem = mPlayer->IsAttackBoost();
-        if (isItem)
-        {
-            mPlayer->UseItem(1);
-            GET_SINGLE(SoundMgr)->PlayEffect(7);
-            OutputMsg("        Use Item AttackBoost!!");
-        }
-        else
-            OutputMsg("        Empty Item!!");
-    }
+    else
+        OutputMsg("        Empty "+ itemName );
 }
 
 void BattleManager::PlayerTurn()

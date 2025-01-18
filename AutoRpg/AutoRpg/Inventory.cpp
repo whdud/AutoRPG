@@ -2,19 +2,35 @@
 #include "Character.h"
 #include "HealthPotion.h"
 #include "AttackBoost.h"
+#include "defines.h"
 
 void Inventory::AddItem(shared_ptr<Item> item) {
     mItems.push_back(item);
 } 
 
-void Inventory::UseItem(int index, Character& character) {
-    if (index >= 0 && index < mItems.size()) {
-        mItems[index]->Use(character);
-        mItems.erase(mItems.begin() + index);
+bool Inventory::UseItem(int index, Character& character) {
+    //if (index >= 0 && index < mItems.size()) {
+    //    mItems[index]->Use(character);
+    //    mItems.erase(mItems.begin() + index);
+    //}
+    bool isItem = false;
+    string itemName = index == 0 ? "Health Potion" : "Attack Boost";
+    for (int i = mItems.size() - 1; i >= 0;--i)
+    {
+        if (mItems[i]->GetName() == itemName)
+        {
+           mItems[i]->Use(character);
+           mItems.erase(mItems.begin() + i);
+           isItem = true;
+           break;
+        }
     }
-    else {
+    if (!isItem)
+    {
         cout << "잘못된 아이템 인덱스입니다.\n";
+        return false;
     }
+    return true;
 }
 
 void Inventory::RemoveItem(int index) {
